@@ -5,3 +5,8 @@
 
 ![Image](logo.png)
 
+[Twitter](https://twitter.com/MisionExtremaVJ)
+
+[Facebook](https://www.facebook.com/MisionExtremaGame)
+
+[Itch.io](https://oskit-producciones.itch.io/mision-extrema)
