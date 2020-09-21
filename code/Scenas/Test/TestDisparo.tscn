@@ -1,0 +1,215 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenas/Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Props/Prototipo/Caja.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenas/Base/Base.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenas/Niveles/HUD.tscn" type="PackedScene" id=4]
+
+[node name="Level" type="Node2D"]
+
+[node name="Nivel" type="Node" parent="."]
+
+[node name="NivelBase" type="Node2D" parent="Nivel"]
+
+[node name="TileMap" type="TileMap" parent="Nivel/NivelBase"]
+format = 1
+
+[node name="Cajas" type="Node2D" parent="."]
+
+[node name="Caja" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( 0, -80 )
+
+[node name="Caja2" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( -56, -80 )
+
+[node name="Caja3" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( -112, -80 )
+
+[node name="Caja47" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( 335.078, 200.631 )
+
+[node name="Caja46" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( 279.078, 200.631 )
+
+[node name="Caja45" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( 223.078, 200.631 )
+
+[node name="Caja42" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( -112, -24 )
+
+[node name="Caja34" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( 0, 200 )
+
+[node name="Caja33" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( -56, 200 )
+
+[node name="Caja32" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( -112, 200 )
+
+[node name="Caja41" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( -168, 200 )
+
+[node name="Caja40" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( -224, 200 )
+
+[node name="Caja39" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( -280, 200 )
+
+[node name="Caja23" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( -168, -247.369 )
+
+[node name="Caja24" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( -224, -247.369 )
+
+[node name="Caja25" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( -280, -247.369 )
+
+[node name="Caja26" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( -280, -192 )
+
+[node name="Caja27" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( -280, -136 )
+
+[node name="Caja28" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( -280, -79.3691 )
+
+[node name="Caja4" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( 56, -80 )
+
+[node name="Caja44" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( 391.078, 200.631 )
+
+[node name="Caja31" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( 55.0779, 200 )
+
+[node name="Caja9" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( 224, -80 )
+
+[node name="Caja10" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( 280, -80 )
+
+[node name="Caja11" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( 336, -80 )
+
+[node name="Caja21" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( 336, -136 )
+
+[node name="Caja22" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( 336, -192 )
+
+[node name="Caja5" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( 112, -80 )
+
+[node name="Caja43" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( 447.078, 200.631 )
+
+[node name="Caja6" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( 168, -80 )
+
+[node name="Caja30" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( 111.078, 200 )
+
+[node name="Caja29" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( 167.078, 200 )
+
+[node name="Caja20" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( 0, -248 )
+
+[node name="Caja19" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( -56, -248 )
+
+[node name="Caja18" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( -112, -248 )
+
+[node name="Caja17" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( 56, -248 )
+
+[node name="Caja16" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( 224, -248 )
+
+[node name="Caja15" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( 280, -248 )
+
+[node name="Caja14" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( 336, -248 )
+
+[node name="Caja13" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( 112, -248 )
+
+[node name="Caja12" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( 168, -248 )
+
+[node name="Caja7" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( 168, -24 )
+
+[node name="Caja8" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( 168, 32.6309 )
+
+[node name="Caja35" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( -280.922, -23.3691 )
+
+[node name="Caja36" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( -280.922, 32.6309 )
+
+[node name="Caja38" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( -280.922, 88 )
+
+[node name="Caja37" parent="Cajas" instance=ExtResource( 2 )]
+position = Vector2( -280.922, 144 )
+
+[node name="HUD" parent="." instance=ExtResource( 4 )]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 280, -163.5 )
+rotation = -3.14159
+SPEED = 200
+IS_CURRENT_PLAYER = true
+SHOW_FIELD_VIEW = false
+TIPO_ARMA = 1
+IS_ARMED = true
+TIPO_DISFRAZ = 1
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2( 83.8073, -28.1311 )
+rotation = 3.14159
+current = true
+zoom = Vector2( 0.5, 0.5 )
+limit_left = -1000
+limit_top = -1000
+limit_right = 1000
+limit_bottom = 1000
+limit_smoothed = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+drag_margin_left = 0.8
+drag_margin_top = 0.7
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="EnemigoAzul" parent="." instance=ExtResource( 1 )]
+position = Vector2( -216, 152 )
+rotation = 4.71238
+SHOW_CROSS_HAIR = false
+IS_NPC = true
+FIELD_VIEW_LENGHT = 380
+TIPO_ARMA = 1
+IS_ARMED = true
+TIPO_DISFRAZ = 1
+TIPO_DISFRAZ_BASE = 1
+
+[node name="EnemigoAzul2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 3.8147e-06, 152 )
+rotation = 3.92699
+FLIP_FIRE_TO_LEFT_ARM = true
+SHOW_CROSS_HAIR = false
+IS_NPC = true
+FIELD_VIEW_LENGHT = 400
+FIELD_VIEW_FANCING_ANG2 = 0.9
+FIELD_VIEW_FIRE_PLAYER = 0.96
+TIPO_ARMA = 2
+IS_ARMED = true
+TIPO_DISFRAZ = 1
+TIPO_DISFRAZ_BASE = 1
+
+[node name="Base" parent="." instance=ExtResource( 3 )]

@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec4 glow_color : hint_color = vec4(1.0);
+
+void fragment(){
+	COLOR = COLOR + glow_color * 0.5;
+}"
+custom_defines = ""
+
+[resource]
+shader = SubResource( 1 )
+shader_param/glow_color = Color( 0.878431, 0.435294, 0.109804, 1 )

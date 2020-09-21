@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Sprites/Varios/CrossHairs/crosshairs_tilesheet_white.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/VFX/muzzle_04_rotated.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Varios/Arma.gd" type="Script" id=3]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+blend_mode = 1
+
+[sub_resource type="Animation" id=2]
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Muzzle:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.5, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Muzzle:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2.5, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 0.5, 0.3 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Muzzle:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2.5, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 11.1296, 0 ), Vector2( 23.1296, 0 ) ]
+}
+
+[node name="Arma" type="Position2D"]
+position = Vector2( 28.8704, 9 )
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 1055, 20, 24, 23 )
+
+[node name="Muzzle" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+light_mask = 8
+material = SubResource( 1 )
+position = Vector2( 23.1296, 0 )
+texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 40.0
+anims/Muzzle = SubResource( 2 )

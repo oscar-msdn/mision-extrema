@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenas/Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenas/Base/Base.tscn" type="PackedScene" id=2]
+
+[node name="Player" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.5, 0.5 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+TIPO_ARMA = 1
+IS_ARMED = true
+TIPO_DISFRAZ = 8
+TIPO_DISFRAZ_BASE = 1
+
+[node name="Base" parent="." instance=ExtResource( 2 )]

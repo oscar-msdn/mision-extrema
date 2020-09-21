@@ -1,0 +1,37 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://Sprites/VFX/muzzle_04_rotated_black.png" type="Texture" id=1]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec4 glow_color : hint_color = vec4(1.0);
+uniform sampler2D emission_texture;
+
+void fragment(){
+	/*
+	vec2 ps = SCREEN_PIXEL_SIZE;
+    vec4 col0 = texture(SCREEN_TEXTURE, SCREEN_UV + vec2(-ps.x, 0));
+    vec4 col1 = texture(SCREEN_TEXTURE, SCREEN_UV + vec2(ps.x, 0));
+    vec4 col2 = texture(SCREEN_TEXTURE, SCREEN_UV + vec2(0, -ps.y));
+    vec4 col3 = texture(SCREEN_TEXTURE, SCREEN_UV + vec2(0, ps.y));	
+    COLOR = 0.25 * (col0 + col1 + col2 + col3) + COLOR;
+	*/
+	vec4 current_color  = texture(TEXTURE,UV);
+	vec4 emission_color  = texture(emission_texture,UV);
+	
+	if(emission_color.b > 0.1f){
+		COLOR = (emission_color + glow_color * 0.5f)
+	}else{
+		COLOR = current_color;
+	}
+	//COLOR = current_color;
+	//float a = glow_color.a;
+	//COLOR = COLOR + glow_color * 0.5;
+}"
+custom_defines = ""
+
+[resource]
+shader = SubResource( 1 )
+shader_param/glow_color = Color( 0.956863, 0.509804, 0.180392, 0.0588235 )
+shader_param/emission_texture = ExtResource( 1 )

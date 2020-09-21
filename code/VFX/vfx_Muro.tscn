@@ -1,0 +1,69 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://VFX/vfx_Muro.gd" type="Script" id=2]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+blend_mode = 1
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.505338, 1 )
+colors = PoolColorArray( 0.957031, 0.847771, 0.474777, 1, 0.945544, 0.0619433, 0.0619433, 1, 0.133333, 0.109804, 0.109804, 0.501961 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="Curve" id=4]
+max_value = 100.0
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.490132, 100 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="Curve" id=6]
+min_value = -200.0
+max_value = 200.0
+_data = [ Vector2( 0, 97.3859 ), 0.0, 0.0, 0, 0, Vector2( 0.259868, 195.909 ), 0.0, 0.0, 0, 0, Vector2( 1, -197.16 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=7]
+curve = SubResource( 6 )
+
+[sub_resource type="Curve" id=8]
+max_value = 3.0
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.253289, 1.4838 ), 0.0, 0.0, 0, 0, Vector2( 0.460526, 0.0110762 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=9]
+curve = SubResource( 8 )
+
+[sub_resource type="ParticlesMaterial" id=10]
+lifetime_randomness = 0.5
+flag_align_y = true
+flag_rotate_y = true
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 10.0
+initial_velocity_random = 0.5
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 100.0
+linear_accel_random = 0.5
+linear_accel_curve = SubResource( 7 )
+damping_curve = SubResource( 5 )
+scale_random = 1.0
+scale_curve = SubResource( 9 )
+color_ramp = SubResource( 3 )
+
+[node name="vfx_Muro" type="Particles2D"]
+light_mask = 8
+material = SubResource( 1 )
+position = Vector2( 130.474, -43.7656 )
+emitting = false
+amount = 20
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.7
+randomness = 0.5
+local_coords = false
+draw_order = 1
+process_material = SubResource( 10 )
+script = ExtResource( 2 )

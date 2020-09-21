@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenas/Test/TestLevel1.tscn" type="PackedScene" id=1]
+
+[node name="Principal" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+margin_left = 31.8845
+margin_top = 27.8266
+margin_right = 121.884
+margin_bottom = 41.8266
+text = "Proyecto Final"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TestLevel1" parent="." instance=ExtResource( 1 )]

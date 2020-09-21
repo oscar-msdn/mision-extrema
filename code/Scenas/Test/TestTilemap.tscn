@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Tilemaps/Nivel 1.tres" type="TileSet" id=1]
+
+[node name="Nivel" type="Node2D"]
+
+[node name="Paredes" type="TileMap" parent="."]
+position = Vector2( -256, -128 )
+tile_set = ExtResource( 1 )
+cell_custom_transform = Transform2D( 0, 0, 0, 0, 0, 0 )
+format = 1
+tile_data = PoolIntArray( 131076, 11, 65540, 131077, 11, 65540, 131078, 11, 65540, 131079, 11, 65540, 131080, 11, 65540, 131081, 11, 131076, 196612, 11, 131076, 196617, 11, 131076, 262148, 11, 131076, 262153, 11, 4, 327684, 11, 131076, 327687, 8, 393221, 327689, 11, 4, 393220, 11, 131076, 393225, 11, 4, 458756, 11, 131076, 458761, 11, 4, 524292, 11, 196612, 524293, 11, 196612, 524294, 11, 196612, 524295, 11, 196612, 524296, 11, 196612, 524297, 11, 196612 )
+
+[node name="Piso" type="TileMap" parent="."]
+position = Vector2( -256, -128 )
+z_index = -1
+tile_set = ExtResource( 1 )
+format = 1
+tile_data = PoolIntArray( 131076, 10, 0, 131077, 10, 0, 131078, 10, 0, 131079, 10, 0, 131080, 10, 0, 196612, 9, 0, 196613, 9, 0, 196614, 9, 0, 196615, 10, 0, 196616, 10, 0, 262148, 9, 0, 262149, 9, 0, 262150, 9, 0, 262151, 9, 0, 262152, 9, 0, 327684, 9, 0, 327685, 9, 0, 327686, 9, 0, 327687, 9, 0, 327688, 9, 0, 393220, 9, 0, 393221, 9, 0, 393222, 9, 0, 393223, 9, 0, 393224, 9, 0, 458756, 9, 0, 458757, 9, 0, 458758, 9, 0, 458759, 9, 0, 458760, 9, 0 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( -256, -128 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2( 256, 128 )
+polygon = PoolVector2Array( 16, 64, 0, 64, 0, 400, 384, 400, 384, 384, 344, 384, 344, 128, 320, 128, 320, 384, 16, 384 )
+one_way_collision = true

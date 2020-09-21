@@ -1,0 +1,73 @@
+[gd_scene format=2]
+
+[node name="HUD" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+margin_left = 56.0
+margin_top = -176.0
+margin_right = 168.0
+margin_bottom = -162.0
+text = "Elimina a todos los guardias"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 64.0
+margin_top = -216.0
+margin_right = 296.0
+margin_bottom = -202.0
+text = "Usa las teclas A W D S para moverte"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="."]
+margin_left = 54.1558
+margin_top = -256.0
+margin_right = 347.156
+margin_bottom = -242.0
+text = "Usa la tecla E para disfrazarte como el guardia"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="."]
+margin_left = -304.0
+margin_top = -272.0
+margin_right = 96.0
+margin_bottom = -241.0
+text = "Para disparar usa Botón izquierdo del mouse o la tecla Espacio"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="."]
+margin_left = -304.0
+margin_top = -256.0
+margin_right = -4.0
+margin_bottom = -242.0
+text = "Botón derecho del mouse para guardar el arma"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label6" type="Label" parent="."]
+margin_left = -304.0
+margin_top = -240.0
+margin_right = -4.0
+margin_bottom = -226.0
+text = "Usa la tecla R para volver reiniciar el nivel"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label7" type="Label" parent="."]
+margin_left = 55.0779
+margin_top = -240.0
+margin_right = 355.078
+margin_bottom = -226.0
+text = "Usa la tecla ESC para salir"
+__meta__ = {
+"_edit_use_anchors_": false
+}

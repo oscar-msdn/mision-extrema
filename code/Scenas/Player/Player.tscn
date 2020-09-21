@@ -1,0 +1,705 @@
+[gd_scene load_steps=83 format=2]
+
+[ext_resource path="res://Sprites/Personajes/sprites.sprites/hitman1_stand.tres" type="Texture" id=1]
+[ext_resource path="res://Scenas/Player/PlayerController.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/Varios/CrossHairs/crosshairs_tilesheet_white.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Personajes/sprites.sprites/hitman1_gun.tres" type="Texture" id=4]
+[ext_resource path="res://Sprites/Personajes/sprites.sprites/hitman1_hold.tres" type="Texture" id=5]
+[ext_resource path="res://Scenas/Enemigos/Animaciones/AnimationPlayerZoibie.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenas/Enemigos/Animaciones/AnimationPlayerRobot.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenas/Enemigos/Animaciones/AnimationPlayerSoldier1.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Sprites/Varios/Arma.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenas/Enemigos/Animaciones/AnimationPlayerSurvior1.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenas/Enemigos/Animaciones/AnimationPlayerWomanGreen.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenas/Enemigos/Animaciones/AnimationPlayerManOld.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenas/Enemigos/Animaciones/AnimationPlayerBrown.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Sprites/Personajes/sprites.sprites/hitman1_machine.tres" type="Texture" id=14]
+[ext_resource path="res://Sprites/Personajes/sprites.sprites/hitman1_reload.tres" type="Texture" id=15]
+[ext_resource path="res://Sprites/Personajes/sprites.sprites/hitman1_silencer.tres" type="Texture" id=16]
+[ext_resource path="res://Scenas/Player/Animaciones/AnimationPlayer.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Scenas/Enemigos/Animaciones/AnimationPlayerAzul.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Scenas/Player/Selector.gd" type="Script" id=20]
+[ext_resource path="res://Scenas/Player/Field_View.gd" type="Script" id=21]
+
+[sub_resource type="CanvasItemMaterial" id=63]
+blend_mode = 1
+
+[sub_resource type="Curve" id=64]
+min_value = 0.5
+max_value = 1.5
+_data = [ Vector2( 0, 1.5 ), 0.0, -0.509091, 0, 1, Vector2( 1, 0.990909 ), -0.509091, 0.0, 1, 0 ]
+
+[sub_resource type="Gradient" id=65]
+offsets = PoolRealArray( 0, 0.996711 )
+colors = PoolColorArray( 0.901961, 0.458824, 0.027451, 0.235294, 0.992157, 0.964706, 0.662745, 0.235294 )
+
+[sub_resource type="RectangleShape2D" id=66]
+extents = Vector2( 12, 22 )
+
+[sub_resource type="CanvasItemMaterial" id=67]
+blend_mode = 1
+
+[sub_resource type="CircleShape2D" id=68]
+radius = 14.0
+
+[sub_resource type="AnimationNodeAnimation" id=69]
+animation = "Armed"
+
+[sub_resource type="AnimationNodeAnimation" id=70]
+animation = "Dead"
+
+[sub_resource type="AnimationNodeAnimation" id=71]
+animation = "Gun"
+
+[sub_resource type="AnimationNodeAnimation" id=72]
+animation = "Hold"
+
+[sub_resource type="AnimationNodeAnimation" id=73]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=74]
+animation = "Machine"
+
+[sub_resource type="AnimationNodeAnimation" id=75]
+animation = "Reload"
+
+[sub_resource type="AnimationNodeAnimation" id=76]
+animation = "Silencer"
+
+[sub_resource type="AnimationNodeAnimation" id=77]
+animation = "Stand"
+
+[sub_resource type="AnimationNodeAnimation" id=78]
+animation = "Walk"
+
+[sub_resource type="AnimationNodeAnimation" id=79]
+animation = "Walk"
+
+[sub_resource type="AnimationNodeAnimation" id=80]
+animation = "Walk"
+
+[sub_resource type="AnimationNodeAnimation" id=81]
+animation = "Walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=82]
+advance_condition = "isWalk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=83]
+advance_condition = "isIdle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=84]
+advance_condition = "isWalk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=85]
+advance_condition = "isIdle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=86]
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=87]
+advance_condition = "isHold"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=88]
+advance_condition = "isNotHold"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=89]
+advance_condition = "isArmed"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=90]
+advance_condition = "isArmed"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=91]
+advance_condition = "isNotArmed"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=92]
+advance_condition = "isReload"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=93]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=94]
+advance_condition = "isGun"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=95]
+advance_condition = "isMachine"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=96]
+advance_condition = "isWalk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=97]
+advance_condition = "isIdle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=98]
+advance_condition = "isReload"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=99]
+advance_condition = "isNotArmed"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=100]
+advance_condition = "isNotArmed"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=101]
+advance_condition = "isNotArmed"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=102]
+advance_condition = "isNotArmed"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=103]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=104]
+advance_condition = "isSilencer"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=105]
+advance_condition = "isNotArmed"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=106]
+advance_condition = "isWalk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=107]
+advance_condition = "isIdle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=108]
+advance_condition = "isNotArmed"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=109]
+
+[sub_resource type="AnimationNodeStateMachine" id=110]
+states/Armed/node = SubResource( 69 )
+states/Armed/position = Vector2( 176, 202.076 )
+states/Dead/node = SubResource( 70 )
+states/Dead/position = Vector2( 973, 320 )
+states/Gun/node = SubResource( 71 )
+states/Gun/position = Vector2( 464, 202.076 )
+states/Hold/node = SubResource( 72 )
+states/Hold/position = Vector2( 67, 313 )
+states/Idle/node = SubResource( 73 )
+states/Idle/position = Vector2( 176, 456 )
+states/Machine/node = SubResource( 74 )
+states/Machine/position = Vector2( 464, -90.9236 )
+states/Reload/node = SubResource( 75 )
+states/Reload/position = Vector2( 464, -225.924 )
+states/Silencer/node = SubResource( 76 )
+states/Silencer/position = Vector2( 464, 76.076 )
+states/Stand/node = SubResource( 77 )
+states/Stand/position = Vector2( 714, 320 )
+states/Walk/node = SubResource( 81 )
+states/Walk/position = Vector2( 973, 456 )
+"states/Walk 2/node" = SubResource( 78 )
+"states/Walk 2/position" = Vector2( 973, 202.076 )
+"states/Walk 3/node" = SubResource( 79 )
+"states/Walk 3/position" = Vector2( 973, -90.9236 )
+"states/Walk 4/node" = SubResource( 80 )
+"states/Walk 4/position" = Vector2( 973, 76.076 )
+transitions = [ "Idle", "Walk", SubResource( 82 ), "Walk", "Idle", SubResource( 83 ), "Gun", "Walk 2", SubResource( 84 ), "Walk 2", "Gun", SubResource( 85 ), "Stand", "Idle", SubResource( 86 ), "Idle", "Hold", SubResource( 87 ), "Hold", "Stand", SubResource( 88 ), "Idle", "Armed", SubResource( 89 ), "Walk", "Armed", SubResource( 90 ), "Armed", "Stand", SubResource( 91 ), "Machine", "Reload", SubResource( 92 ), "Reload", "Machine", SubResource( 93 ), "Armed", "Gun", SubResource( 94 ), "Armed", "Machine", SubResource( 95 ), "Machine", "Walk 3", SubResource( 96 ), "Walk 3", "Machine", SubResource( 97 ), "Walk 3", "Reload", SubResource( 98 ), "Machine", "Stand", SubResource( 99 ), "Gun", "Stand", SubResource( 100 ), "Walk 2", "Stand", SubResource( 101 ), "Walk 3", "Stand", SubResource( 102 ), "Stand", "Dead", SubResource( 103 ), "Armed", "Silencer", SubResource( 104 ), "Silencer", "Stand", SubResource( 105 ), "Silencer", "Walk 4", SubResource( 106 ), "Walk 4", "Silencer", SubResource( 107 ), "Walk 4", "Stand", SubResource( 108 ), "Idle", "Dead", SubResource( 109 ) ]
+start_node = "Idle"
+end_node = "Dead"
+graph_offset = Vector2( -20.4551, 40.8627 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=111]
+
+[sub_resource type="Animation" id=112]
+length = 0.001
+
+[sub_resource type="Animation" id=113]
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionShape2D/Personaje:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=114]
+
+[sub_resource type="Animation" id=115]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionShape2D/Personaje:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 8, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionShape2D/Personaje:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape2D/Arma:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 28.8704, 9 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CollisionShape2D:shape")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ SubResource( 66 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CollisionShape2D/Personaje:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.851852, 1 ) ]
+}
+
+[sub_resource type="Animation" id=116]
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionShape2D/Personaje:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionShape2D/Personaje:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 2, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape2D/Personaje:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.851852, 1 ) ]
+}
+
+[sub_resource type="Animation" id=117]
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionShape2D/Personaje:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionShape2D/Personaje:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape2D/Personaje:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CollisionShape2D/Personaje:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.851852, 1 ) ]
+}
+
+[sub_resource type="Animation" id=118]
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionShape2D/Personaje:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 14 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionShape2D/Personaje:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 8, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape2D/Arma:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 28.8704, 9 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CollisionShape2D/Personaje:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.851852, 1 ) ]
+}
+
+[sub_resource type="Animation" id=119]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionShape2D/Personaje:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 15 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionShape2D/Personaje:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 4, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape2D/Personaje:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.851852, 1 ) ]
+}
+
+[sub_resource type="Animation" id=120]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionShape2D/Personaje:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 10, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionShape2D/Personaje:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 16 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape2D/Personaje:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 0.851852, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CollisionShape2D/Arma:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 33, 9 ) ]
+}
+
+[sub_resource type="Animation" id=121]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionShape2D/Personaje:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionShape2D/Personaje:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape2D/Personaje:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.851852, 1 ) ]
+}
+
+[sub_resource type="Animation" id=122]
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionShape2D/Personaje:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.294118, 0.25098, 0.25098, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=61]
+
+[sub_resource type="CanvasItemMaterial" id=62]
+blend_mode = 1
+
+[node name="Player" type="KinematicBody2D"]
+light_mask = 0
+collision_mask = 6
+script = ExtResource( 2 )
+
+[node name="Origen" type="Position2D" parent="."]
+
+[node name="LineaDisparo" type="Line2D" parent="."]
+light_mask = 8
+material = SubResource( 63 )
+points = PoolVector2Array( 61.75, 109.957 )
+width = 1.5
+width_curve = SubResource( 64 )
+default_color = Color( 0.964706, 0.85098, 0.611765, 1 )
+gradient = SubResource( 65 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 66 )
+
+[node name="Personaje" type="Sprite" parent="CollisionShape2D"]
+light_mask = -2147483644
+position = Vector2( 1, 0 )
+scale = Vector2( 0.851852, 1 )
+texture = ExtResource( 1 )
+
+[node name="Arma" parent="CollisionShape2D" instance=ExtResource( 9 )]
+
+[node name="Mira" type="Position2D" parent="."]
+position = Vector2( 83, 0 )
+z_index = 2
+
+[node name="Crosshair" type="Sprite" parent="Mira"]
+modulate = Color( 1, 1, 1, 0.501961 )
+light_mask = -2147483644
+material = SubResource( 67 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 84, 429, 34, 34 )
+
+[node name="Selector" type="Area2D" parent="Mira"]
+input_pickable = false
+monitorable = false
+script = ExtResource( 20 )
+
+[node name="Label" type="Label" parent="Mira/Selector"]
+visible = false
+margin_left = -46.0
+margin_top = -32.0
+margin_right = 45.0
+margin_bottom = -18.0
+text = "Telekinesis [T]"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mira/Selector"]
+shape = SubResource( 68 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 110 )
+anim_player = NodePath("../AnimationPlayer")
+parameters/playback = SubResource( 111 )
+parameters/conditions/isArmed = false
+parameters/conditions/isGun = false
+parameters/conditions/isHold = false
+parameters/conditions/isIdle = true
+parameters/conditions/isMachine = false
+parameters/conditions/isNotArmed = true
+parameters/conditions/isNotHold = false
+parameters/conditions/isReload = false
+parameters/conditions/isSilencer = false
+parameters/conditions/isWalk = false
+
+[node name="AnimationPlayer" parent="." instance=ExtResource( 17 )]
+
+[node name="AnimationPlayerHitman" parent="." instance=ExtResource( 17 )]
+anims/Armed = SubResource( 112 )
+anims/Dead = SubResource( 113 )
+anims/Empty = SubResource( 114 )
+anims/Gun = SubResource( 115 )
+anims/Hold = SubResource( 116 )
+anims/Idle = SubResource( 117 )
+anims/Machine = SubResource( 118 )
+anims/Reload = SubResource( 119 )
+anims/Silencer = SubResource( 120 )
+anims/Stand = SubResource( 121 )
+anims/Walk = SubResource( 122 )
+
+[node name="AnimationPlayerAzul" parent="." instance=ExtResource( 18 )]
+
+[node name="AnimationPlayerBrown" parent="." instance=ExtResource( 13 )]
+
+[node name="AnimationPlayerManOld" parent="." instance=ExtResource( 12 )]
+
+[node name="AnimationPlayerRobot" parent="." instance=ExtResource( 7 )]
+
+[node name="AnimationPlayerSoldier1" parent="." instance=ExtResource( 8 )]
+
+[node name="AnimationPlayerSurvidor1" parent="." instance=ExtResource( 10 )]
+
+[node name="AnimationPlayerWomanGreen" parent="." instance=ExtResource( 11 )]
+
+[node name="AnimationPlayerZoibie" parent="." instance=ExtResource( 6 )]
+
+[node name="NPC" type="Node" parent="."]
+
+[node name="ViewField" type="Area2D" parent="NPC"]
+input_pickable = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC/ViewField"]
+shape = SubResource( 61 )
+
+[node name="FX_Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+position = Vector2( 50, 50 )
+rect = Rect2( -100, -100, 100, 100 )
+process_parent = true
+physics_process_parent = true
+
+[node name="Field_View" type="Node2D" parent="."]
+material = SubResource( 62 )
+z_index = -1
+script = ExtResource( 21 )
+[connection signal="SelectItem" from="Mira/Selector" to="." method="_on_Selector_SelectItem"]
+[connection signal="body_entered" from="Mira/Selector" to="Mira/Selector" method="_on_Selector_body_entered"]
+[connection signal="body_exited" from="Mira/Selector" to="Mira/Selector" method="_on_Selector_body_exited"]
+[connection signal="body_entered" from="NPC/ViewField" to="." method="_on_ViewField_body_entered"]
+[connection signal="body_exited" from="NPC/ViewField" to="." method="_on_ViewField_body_exited"]
+[connection signal="mouse_entered" from="NPC/ViewField" to="." method="_on_ViewField_mouse_entered"]
+[connection signal="mouse_exited" from="NPC/ViewField" to="." method="_on_ViewField_mouse_exited"]
+[connection signal="timeout" from="FX_Timer" to="." method="_on_FX_Timer_timeout"]
