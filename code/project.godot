@@ -8,28 +8,87 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node",
+"class": "EntityBase",
+"language": "GDScript",
+"path": "res://Scripts/Core/entity_base.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "EntityController",
+"language": "GDScript",
+"path": "res://Scripts/Core/entity_controller.gd"
+}, {
+"base": "EntityController",
+"class": "EntityHealth",
+"language": "GDScript",
+"path": "res://Scripts/Core/entity_health.gd"
+}, {
+"base": "WeaponBase",
+"class": "GunWeapon",
+"language": "GDScript",
+"path": "res://Scripts/Core/gun_weapon.gd"
+}, {
+"base": "EntityHealth",
+"class": "NpcController",
+"language": "GDScript",
+"path": "res://Scripts/Core/npc_controller.gd"
+}, {
+"base": "NpcController",
+"class": "NpcEntity",
+"language": "GDScript",
+"path": "res://Scripts/Core/npc_entity.gd"
+}, {
+"base": "EntityHealth",
+"class": "PlayerController",
+"language": "GDScript",
+"path": "res://Scripts/Core/player_controller.gd"
+}, {
+"base": "PlayerController",
+"class": "PlayerEntity",
+"language": "GDScript",
+"path": "res://Scripts/Core/player_entity.gd"
+}, {
+"base": "EntityBase",
+"class": "WeaponBase",
+"language": "GDScript",
+"path": "res://Scripts/Core/weapon_base.gd"
+} ]
 _global_script_class_icons={
-
+"EntityBase": "",
+"EntityController": "",
+"EntityHealth": "",
+"GunWeapon": "",
+"NpcController": "",
+"NpcEntity": "",
+"PlayerController": "",
+"PlayerEntity": "",
+"WeaponBase": ""
 }
 
 [application]
 
 config/name="TopDown"
-config/description="Proyecto final de la carrera de video juegos"
-run/main_scene="res://Scenas/Test/TestCamara.tscn"
+config/description="Mision Extrema Video Juego"
+run/main_scene="res://Scenas/Test Topdown Move/TestMove.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 Utils="*res://Scripts/Utils.gd"
 Events="*res://Scripts/Events.gd"
-Main="*res://Scripts/Main.gd"
 
 [display]
 
-window/size/height=768
+window/size/width=1920
+window/size/height=1080
 window/size/resizable=false
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "codeandweb.texturepacker", "godot-kra-psd-importer" )
 
 [input]
 
@@ -87,7 +146,7 @@ FreeCamara={
 
 [input_devices]
 
-pointing/emulate_touch_from_mouse=true
+pointing/emulate_mouse_from_touch=false
 
 [layer_names]
 
@@ -109,6 +168,15 @@ pointing/emulate_touch_from_mouse=true
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 quality/2d/use_nvidia_rect_flicker_workaround=true
+quality/intended_usage/framebuffer_allocation=0
+quality/intended_usage/framebuffer_allocation.mobile=0
 quality/2d/use_pixel_snap=true
+threads/thread_model=2
+vram_compression/import_etc=true
+batching/lights/scissor_area_threshold=0.0
+gles2/compatibility/disable_half_float=true
+batching/precision/uv_contract=true
+environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://default_env.tres"

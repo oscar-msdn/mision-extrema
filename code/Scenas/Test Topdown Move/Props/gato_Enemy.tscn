@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenas/Test Topdown Move/Props/gato_enemigo.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Mockups/gato_inv.png" type="Texture" id=2]
+
+
+
+
+[node name="gato_enemy" type="KinematicBody2D"]
+script = ExtResource( 1 )
+
+[node name="gato" type="Sprite" parent="."]
+scale = Vector2( 0.396508, 0.396508 )
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+scale = Vector2( 0.396508, 0.396508 )
+polygon = PoolVector2Array( 118.5, 118.5, -118.5, 118.5, -118.5, -118.5, 118.5, -118.5 )
