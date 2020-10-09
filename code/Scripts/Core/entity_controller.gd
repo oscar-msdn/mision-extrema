@@ -2,8 +2,10 @@ extends KinematicBody2D
 #Clase base de gestion de movimiento
 class_name EntityController
 
-export(float) var Velocity = 500.0
-export(float) var Sensibility:float = 15.0
+signal position_changed(value)
+
+export(float) var Velocity = 1000.0
+export(float) var Sensibility:float = 5.0
 
 var direction :Vector2 = Vector2.ZERO
 var lookat_position : Vector2 = Vector2.ZERO
@@ -16,22 +18,43 @@ func _process(delta):
 	_loop_process_render(delta)
 
 func _physics_process(delta):
-	make_move(delta)
 	_loop_process(delta)
 
 func make_move(delta):
-	get_look_at(delta)
 	move_entity(delta)
+	get_look_at(delta)
 
+var old_velocity_lineal := Vector2.ZERO
 func move_entity(delta):
 	var vel_lineal_temp = direction.normalized() * Velocity
-	velocity_lineal = velocity_lineal.linear_interpolate(vel_lineal_temp,delta*Sensibility)
-	velocity_lineal = velocity_lineal.clamped(Velocity)
-	velocity_lineal = move_and_slide(velocity_lineal)
+	if vel_lineal_temp != Vector2.ZERO or velocity_lineal != Vector2.ZERO:
+		velocity_lineal = velocity_lineal.linear_interpolate(vel_lineal_temp,delta*Sensibility)
+		velocity_lineal = velocity_lineal.clamped(Velocity)
+		velocity_lineal = velocity_lineal.ceil()
+		if vel_lineal_temp == Vector2.ZERO:
+			if old_velocity_lineal == velocity_lineal:
+				velocity_lineal = Vector2.ZERO
+				
+		old_velocity_lineal = velocity_lineal
+		if velocity_lineal != Vector2.ZERO:
+			var old_position = global_position
+			velocity_lineal = move_and_slide(velocity_lineal)
+			old_position = global_position - old_position 
+			emit_signal("position_changed",old_position)
 
+var old_lookat_position := Vector2.ZERO
+var rotation_to :float = 0
 func get_look_at(delta):
-	var rotation_to =  lookat_position.angle_to_point(position)
-	rotation = lerp_angle(rotation, rotation_to, delta * Sensibility)
+	if old_lookat_position != lookat_position or velocity_lineal != Vector2.ZERO:
+		old_lookat_position = lookat_position
+		rotation_to =  lookat_position.angle_to_point(position)
+	if rotation_to != rotation:
+		var rot = lerp_angle(rotation, rotation_to, delta * Sensibility)
+		var diff = abs(rot - rotation_to)
+		if diff < 0.01:
+			rotation = rotation_to
+		else:
+			rotation = rot
 
 func lerp_angle(from, to, weight):
 	return from + short_angle_dist(from, to) * weight
@@ -48,9 +71,8 @@ func _init_entity():
 	pass
 
 #Loop general. _physics_process
-# warning-ignore:unused_argument
 func _loop_process(delta):
-	pass
+	make_move(delta)
 
 #Loop de render. _process
 # warning-ignore:unused_argument

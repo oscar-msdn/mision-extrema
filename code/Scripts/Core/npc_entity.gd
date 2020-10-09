@@ -3,6 +3,9 @@ extends NpcController
 class_name NpcEntity
 
 func _init_entity():
+	add_to_group("NPC")
+	collision_mask = 7
+	collision_layer = 2
 	assert(.connect("entity_died",self,"_npc_died")== 0,"Error")
 	assert(.connect("health_changed",self,"_npc_health_change")==0,"Error")
 	._init_entity()

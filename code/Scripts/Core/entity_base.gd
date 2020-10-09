@@ -12,7 +12,6 @@ func _physics_process(delta):
 	_loop_process(delta)
 
 #Metodos a Heredar
-
 #Incializacion de entidades. _ready
 func _init_entity():
 	pass

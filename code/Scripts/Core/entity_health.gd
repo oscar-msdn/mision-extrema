@@ -7,6 +7,13 @@ signal entity_died()
 
 export(int) var health = 100
 export(bool)var is_alive = true
+export(bool)var is_alive_stop = false
+
+func _init_entity():
+	._init_entity()
+	if is_alive_stop:
+		if !is_alive:
+			Utils.set_enabler_entity(self,false)
 
 func get_healt(value):
 	if is_alive:
