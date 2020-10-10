@@ -3,7 +3,8 @@ extends EntityBase
 class_name EntityController
 
 export(float) var Velocity = 1000.0
-export(float) var Sensibility:float = 5.0
+export(float) var Mouse_Sensibility:float = 10.0
+export(float) var Sensibility:float = 10.0
 
 var direction :Vector2 = Vector2.ZERO
 var lookat_position : Vector2 = Vector2.ZERO
@@ -13,11 +14,11 @@ func _physics_process(delta):
 	make_move(delta)
 
 func make_move(delta):
-	move_entity(delta)
-	get_look_at(delta)
+	_move_entity(delta)
+	_get_look_at(delta)
 
 var old_velocity_lineal := Vector2.ZERO
-func move_entity(delta):
+func _move_entity(delta):
 	var vel_lineal_temp = direction.normalized() * Velocity
 	if vel_lineal_temp != Vector2.ZERO or velocity_lineal != Vector2.ZERO:
 		velocity_lineal = velocity_lineal.linear_interpolate(vel_lineal_temp,delta*Sensibility)
@@ -36,12 +37,15 @@ func move_entity(delta):
 
 var old_lookat_position := Vector2.ZERO
 var rotation_to :float = 0
-func get_look_at(delta):
+func _get_look_at(delta):
 	if old_lookat_position != lookat_position or velocity_lineal != Vector2.ZERO:
 		old_lookat_position = lookat_position
 		rotation_to =  lookat_position.angle_to_point(position)
+		_custom_look_at(delta)
+
+func _custom_look_at(delta):
 	if rotation_to != rotation:
-		var rot = lerp_angle(rotation, rotation_to, delta * Sensibility)
+		var rot = lerp_angle(rotation, rotation_to, delta * Mouse_Sensibility)
 		var diff = abs(rot - rotation_to)
 		if diff < 0.01:
 			rotation = rotation_to

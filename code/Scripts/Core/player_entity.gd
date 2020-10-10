@@ -7,6 +7,9 @@ func _ready():
 	enable_blink_cursor = true
 	enable_custom_cursor = true
 	is_show_cursor = true
+	enable_strafe = true
+	is_simple_mode = false
+	set_cursor_settings()
 	add_to_group("Player")
 	collision_layer = 1
 	collision_mask = 6

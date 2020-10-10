@@ -20,10 +20,14 @@ var cursor_custom_blink := load("res://Sprites/Varios/Cursores/Outline/crosshair
 var cursor_virtual_tpl := load("res://Scenas/Test Topdown Move/Props/Virtual_Cursor.tscn")
 
 var margin_screen := Vector2(100.0,100.0)
-onready var center_screen := (get_viewport_rect().size - margin_screen) / 2
+var center_screen # := (get_viewport_rect().size - margin_screen) / 2
 
 var virtual_cursor = null
 var _global_mouse_pos:Vector2 = Vector2()
+
+func _ready():
+	center_screen = (get_viewport_rect().size - margin_screen) / 2
+	init_cursor()
 
 func set_cursor_layer_collision(value):
 	cursor_layer_collision = value
@@ -40,9 +44,6 @@ func set_cursor_mask_collision(value):
 
 func get_cursor_mask_collision() -> int:
 	return cursor_mask_collision
-
-func _ready():
-	init_cursor()
 
 func init_cursor():
 	if !is_show_cursor:
@@ -100,9 +101,13 @@ func blink_cursor():
 				else:
 					Input.set_custom_mouse_cursor(cursor_custom)
 
+func set_cursor_settings():
+	init_cursor()
+
 func manage_cursor_input():
-	if enable_input and is_show_cursor:
-		manage_cursor_position()
+	if enable_input:
+		if is_show_cursor:
+			manage_cursor_position()
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
