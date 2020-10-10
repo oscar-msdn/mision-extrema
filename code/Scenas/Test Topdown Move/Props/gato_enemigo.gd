@@ -1,8 +1,5 @@
 extends NpcEntity
 
-func _init_entity():
-	._init_entity()
-
 func _player_died():
 	print("died!")
 

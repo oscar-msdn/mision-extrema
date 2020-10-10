@@ -27,13 +27,11 @@ var is_empty:bool = false
 var co_reload_wait = null
 var counter_recharger_time:float = 0.0
 
-func _init_entity():
-	._init_entity()
+func _ready():
 	remain_bullets = amount_charger_bullets
 	remain_chargers = amount_gun_charger
 
-func _loop_process_render(delta):
-	._loop_process_render(delta)
+func _process(delta):
 	if co_reload_wait and co_reload_wait.is_valid():
 		counter_recharger_time = counter_recharger_time + delta
 		if counter_recharger_time > recharger_time:

@@ -1,8 +1,6 @@
-extends KinematicBody2D
+extends EntityBase
 #Clase base de gestion de movimiento
 class_name EntityController
-
-signal position_changed(value)
 
 export(float) var Velocity = 1000.0
 export(float) var Sensibility:float = 5.0
@@ -11,14 +9,8 @@ var direction :Vector2 = Vector2.ZERO
 var lookat_position : Vector2 = Vector2.ZERO
 var velocity_lineal :Vector2 = Vector2.ZERO
 
-func _ready():
-	_init_entity()
-
-func _process(delta):
-	_loop_process_render(delta)
-
 func _physics_process(delta):
-	_loop_process(delta)
+	make_move(delta)
 
 func make_move(delta):
 	move_entity(delta)
@@ -40,7 +32,7 @@ func move_entity(delta):
 			var old_position = global_position
 			velocity_lineal = move_and_slide(velocity_lineal)
 			old_position = global_position - old_position 
-			emit_signal("position_changed",old_position)
+			_position_changed(old_position)
 
 var old_lookat_position := Vector2.ZERO
 var rotation_to :float = 0
@@ -64,18 +56,6 @@ func short_angle_dist(from, to):
 	var difference = fmod(to - from, max_angle)
 	return fmod(2 * difference, max_angle) - difference
 
-#Metodos a Heredar
-
-#Incializacion de entidades. _ready
-func _init_entity():
-	pass
-
-#Loop general. _physics_process
-func _loop_process(delta):
-	make_move(delta)
-
-#Loop de render. _process
 # warning-ignore:unused_argument
-func _loop_process_render(delta):
+func _position_changed(value):
 	pass
-

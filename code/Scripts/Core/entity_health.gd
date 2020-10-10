@@ -2,15 +2,11 @@ extends EntityController
 #Clase base de gestion de salud
 class_name EntityHealth
 
-signal health_changed(value)
-signal entity_died()
-
 export(int) var health = 100
 export(bool)var is_alive = true
 export(bool)var is_alive_stop = false
 
-func _init_entity():
-	._init_entity()
+func _ready():
 	if is_alive_stop:
 		if !is_alive:
 			Utils.set_enabler_entity(self,false)
@@ -18,13 +14,20 @@ func _init_entity():
 func get_healt(value):
 	if is_alive:
 		health = health + value
-		emit_signal("health_changed",health)
+		_health_changed(health)
 
 func get_damage(value):
 	if is_alive:
 		health =  health - value
 		if health > 0:
-			emit_signal("health_changed",health)
+			_health_changed(health)
 		else:
 			is_alive = false
-			emit_signal("entity_died")
+			_entity_died()
+
+# warning-ignore:unused_argument
+func _health_changed(value):
+	pass
+
+func _entity_died():
+	pass
