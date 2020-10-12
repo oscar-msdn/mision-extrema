@@ -2,23 +2,25 @@ extends PlayerController
 #Clase que representa una entidad controlada por el jugador
 class_name PlayerEntity
 
-func _ready():
+var current_body:EntityHealth = null
+
+func _init():
 	enable_input = true
 	enable_blink_cursor = true
 	enable_custom_cursor = true
 	is_show_cursor = true
 	enable_strafe = true
 	is_simple_mode = false
-	set_cursor_settings()
+	enable_laser = false
 	add_to_group("Player")
-	collision_layer = 1
-	collision_mask = 6
-	set_cursor_layer_collision(0)
-	set_cursor_mask_collision(7)
+	collision_layer = Util.LAYER_PLAYER
+	collision_mask = Util.MASK_PLAYER
+	z_index = Util.ZINDEX_PLAYER
+	z_as_relative = false
+
+func _ready():
+	set_cursor_settings()
 	
-
-var current_body:EntityHealth = null
-
 func _MenuCursorDown():
 	print("Menu on->")
 	is_hold_cursor = true
@@ -27,11 +29,11 @@ func _MenuCursorUp():
 	print("Menu off->")
 	is_hold_cursor = false
 
-func _cursorEntityOn(body:EntityHealth):
+func _cursorEntityOn(body):
 	current_body = body
 	print("On->",body)
 
-func _cursorEntityOff(body:EntityHealth):
+func _cursorEntityOff(body):
 	current_body = null
 	print("Exit->",body)
 
@@ -42,6 +44,7 @@ func _OptionSpecial():
 	print("opt_special->")
 
 func _ActionOn():
+	fire()
 	print("action_on->")
 
 func _ActionOff():
@@ -56,3 +59,22 @@ func _entity_died():
 func _change_color(color):
 	if current_body != self:
 		._change_color(color)
+
+onready var end_of_gun = $EndOfGun
+func _Action():
+	#fire()
+	print("action-->")
+	
+func fire():
+	var from = end_of_gun.global_position
+	var to = get_target_position()
+	Helper.fire_bullet(from,to) 
+
+func _draw():
+	var from = end_of_gun.global_position
+	var to = get_target_position()
+	draw_Laser(from,to)
+
+# warning-ignore:unused_argument
+func _rotation_changed(value):
+	is_update_draw = true

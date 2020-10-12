@@ -2,6 +2,7 @@ extends EntityController
 #Clase base de gestion de salud
 class_name EntityHealth
 
+export(int) var shield = 50
 export(int) var health = 100
 export(bool)var is_alive = true
 export(bool)var is_alive_stop = false
@@ -9,14 +10,18 @@ export(bool)var is_alive_stop = false
 func _ready():
 	if is_alive_stop:
 		if !is_alive:
-			Utils.set_enabler_entity(self,false)
+			Helper.set_enabler_entity(self,false)
 
 func get_healt(value):
 	if is_alive:
 		health = health + value
 		_health_changed(health)
 
-func get_damage(value):
+func get_shield():
+	return shield
+
+# warning-ignore:unused_argument
+func give_damage(value,current_transform):
 	if is_alive:
 		health =  health - value
 		if health > 0:

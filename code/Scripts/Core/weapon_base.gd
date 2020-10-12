@@ -13,7 +13,7 @@ export(int) var amount_charger_bullets = 10
 #RPM
 export(float) var fire_rate = 60
 #Segundos
-export(float) var recharger_time = 1000
+export(float) var recharger_time = 1.0
 #Cantidad de munisiones en cada disparo
 export(float) var fire_spread_bullets = 1
 #Daño de dado por cada proyectil

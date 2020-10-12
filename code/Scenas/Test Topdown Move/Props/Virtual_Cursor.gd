@@ -3,22 +3,13 @@ extends Sprite
 signal entity_over(body)
 signal entity_exit(body)
 
-export(int) var cursor_layer_collision = 0 setget set_cursor_layer_collision, get_cursor_layer_collision
-export(int) var cursor_mask_collision = 0 setget set_cursor_mask_collision, get_cursor_mask_collision
+func _init():
+	z_index = Util.ZINDEX_CURSOR
+	z_as_relative = false
 
-func set_cursor_layer_collision(value):
-	cursor_layer_collision = value
-	$Area2D.collision_layer = value
-
-func get_cursor_layer_collision() -> int:
-	return cursor_layer_collision
-
-func set_cursor_mask_collision(value):
-	cursor_mask_collision = value
-	$Area2D.collision_mask  = value
-
-func get_cursor_mask_collision() -> int:
-	return cursor_mask_collision
+func _ready():	
+	$Area2D.collision_layer = Util.LAYER_CURSOR
+	$Area2D.collision_mask  = Util.MASK_CURSOR
 
 func _on_Area2D_body_entered(body):
 	emit_signal("entity_over",body)

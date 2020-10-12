@@ -1,12 +1,13 @@
 extends Node
 
-#func _ready():
+func _ready():
 #	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-#	add_to_group("Main")
-#	Utils.Subscribir(Events.SIGNAL_PLAYER_DEAD,self,"on_player_dead")
-#	#Events.connect(Events.SIGNAL_PLAYER_DEAD,self,"on_player_dead")
-var tpl = load("res://Scenas/Test Topdown Move/Props/gato_enemy.tscn")
-func _unhandled_input(event):
+	add_to_group("Main")
+	Utils.Subscribir(Events.SIGNAL_PLAYER_DEAD,self,"on_player_dead")
+	#Events.connect(Events.SIGNAL_PLAYER_DEAD,self,"on_player_dead")
+	
+
+func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		get_tree().quit()
 #		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -14,7 +15,7 @@ func _unhandled_input(event):
 	if event.is_action_pressed("test_load"):
 # warning-ignore:unused_variable
 		for i in range(10):
-			get_tree().get_root().add_child(tpl.instance())
+			get_tree().get_root().add_child(Util.gato_enemy_template.instance())
 	
 	if event.is_action_pressed("stop_process"):
 		set_process_internal(false)

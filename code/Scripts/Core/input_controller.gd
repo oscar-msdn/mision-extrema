@@ -9,6 +9,8 @@ export(bool) var is_simple_mode = true
 export(float) var rotation_sensibility = 0.08
 export(float) var move_sensibility = 1.0
 
+var _global_mouse_pos:Vector2 = Vector2()
+
 # warning-ignore:unused_argument
 func _physics_process(delta):
 	manage_input()
@@ -18,9 +20,38 @@ func manage_input():
 		get_input()
 		
 var local_direction:Vector2 = Vector2.ZERO
+var local_direction_rotation:Vector2 = Vector2.ZERO
+
 func get_input():
-	local_direction.y =  (Input.get_action_strength("Down") - Input.get_action_strength("Up"))
-	local_direction.x =  (Input.get_action_strength("Right") - Input.get_action_strength("Left"))
+	if is_simple_mode:
+		var dir = Vector2.ZERO
+		local_direction = Vector2.ZERO
+		if Input.is_action_pressed("Down"):
+			dir.y =  1.0
+			local_direction += Vector2.DOWN
+		elif Input.is_action_pressed("Up"):
+			dir.y = -1.0
+			local_direction += Vector2.UP
+		if Input.is_action_pressed("Right"):
+			dir.x = 1.0
+			local_direction += Vector2.RIGHT
+		elif Input.is_action_pressed("Left"):
+			dir.x = -1.0
+			local_direction += Vector2.LEFT
+		if dir.y != 0 or dir.x != 0:
+			local_direction_rotation = dir
+	else:
+		local_direction.y =  (Input.get_action_strength("Down") - Input.get_action_strength("Up"))
+		local_direction.x =  (Input.get_action_strength("Right") - Input.get_action_strength("Left"))
+	
+	if Input.is_action_pressed("Action"):
+		_Action()
+	
+func _unhandled_input(event):
+	get_tree().set_input_as_handled()
+	
+	if event is InputEventMouseMotion:
+		_global_mouse_pos += event.relative
 	
 	if Input.is_action_just_released("MenuCursorDown"):
 		_MenuCursorDown()
@@ -57,7 +88,7 @@ func _get_look_at(delta):
 		._get_look_at(delta)
 	else:
 		if is_simple_mode:
-			rotation = local_direction.angle() 
+			rotation = local_direction_rotation.angle() 
 		else:
 			rotation_to += local_direction.x * rotation_sensibility
 			_custom_look_at(delta)
@@ -81,4 +112,7 @@ func _ActionOn():
 	pass
 	
 func _ActionOff():
+	pass
+
+func _Action():
 	pass

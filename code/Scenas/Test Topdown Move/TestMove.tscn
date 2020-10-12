@@ -6,12 +6,15 @@
 [node name="TestMove" type="Node2D"]
 
 [node name="gato_player" parent="." instance=ExtResource( 1 )]
+light_mask = 8
 
 [node name="Camera2D" type="Camera2D" parent="gato_player"]
 current = true
 
 [node name="gato_enemy" parent="." instance=ExtResource( 2 )]
-position = Vector2( -551.377, -253.214 )
+light_mask = 4
+position = Vector2( 10.623, -253.214 )
 
 [node name="gato_enemy2" parent="." instance=ExtResource( 2 )]
+light_mask = 16
 position = Vector2( 519.913, -253.214 )

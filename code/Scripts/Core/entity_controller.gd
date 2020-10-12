@@ -32,16 +32,20 @@ func _move_entity(delta):
 		if velocity_lineal != Vector2.ZERO:
 			var old_position = global_position
 			velocity_lineal = move_and_slide(velocity_lineal)
+			#var collision =  move_and_collide(velocity_lineal * delta)
+			#if collision:
+			#	velocity_lineal = velocity_lineal.slide(collision.normal)
+				
 			old_position = global_position - old_position 
 			_position_changed(old_position)
 
 var old_lookat_position := Vector2.ZERO
 var rotation_to :float = 0
 func _get_look_at(delta):
-	if old_lookat_position != lookat_position or velocity_lineal != Vector2.ZERO:
+	if old_lookat_position != lookat_position:# or velocity_lineal != Vector2.ZERO:
 		old_lookat_position = lookat_position
 		rotation_to =  lookat_position.angle_to_point(position)
-		_custom_look_at(delta)
+	_custom_look_at(delta)
 
 func _custom_look_at(delta):
 	if rotation_to != rotation:
@@ -51,15 +55,12 @@ func _custom_look_at(delta):
 			rotation = rotation_to
 		else:
 			rotation = rot
-
-func lerp_angle(from, to, weight):
-	return from + short_angle_dist(from, to) * weight
-
-func short_angle_dist(from, to):
-	var max_angle = PI * 2
-	var difference = fmod(to - from, max_angle)
-	return fmod(2 * difference, max_angle) - difference
+		_rotation_changed(rotation)
 
 # warning-ignore:unused_argument
 func _position_changed(value):
+	pass
+
+# warning-ignore:unused_argument
+func _rotation_changed(value):
 	pass

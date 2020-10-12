@@ -19,3 +19,6 @@ position = Vector2( -0.943933, -0.943859 )
 scale = Vector2( 25.1632, 24.8801 )
 process_parent = true
 physics_process_parent = true
+
+[node name="EndOfGun" type="Position2D" parent="."]
+position = Vector2( 80.9575, 0 )

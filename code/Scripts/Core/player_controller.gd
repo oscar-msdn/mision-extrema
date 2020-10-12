@@ -12,38 +12,14 @@ export(bool) var enable_custom_cursor = true
 export(bool) var enable_custom_virtual_cursor = true
 export(bool) var is_hold_cursor = false
 
-var cursor_layer_collision:int = 0 setget set_cursor_layer_collision, get_cursor_layer_collision
-var cursor_mask_collision:int = 0 setget set_cursor_mask_collision, get_cursor_mask_collision
-
-var cursor_custom := load("res://Sprites/Varios/Cursores/Outline/crosshair007.png")
-var cursor_custom_blink := load("res://Sprites/Varios/Cursores/Outline/crosshair009.png")
-var cursor_virtual_tpl := load("res://Scenas/Test Topdown Move/Props/Virtual_Cursor.tscn")
-
 var margin_screen := Vector2(100.0,100.0)
 var center_screen # := (get_viewport_rect().size - margin_screen) / 2
 
 var virtual_cursor = null
-var _global_mouse_pos:Vector2 = Vector2()
 
 func _ready():
 	center_screen = (get_viewport_rect().size - margin_screen) / 2
 	init_cursor()
-
-func set_cursor_layer_collision(value):
-	cursor_layer_collision = value
-	if virtual_cursor:
-		virtual_cursor.set_cursor_mask_collision(value)
-
-func get_cursor_layer_collision() -> int:
-	return cursor_layer_collision
-
-func set_cursor_mask_collision(value):
-	cursor_mask_collision = value
-	if virtual_cursor:
-		virtual_cursor.set_cursor_mask_collision(value)
-
-func get_cursor_mask_collision() -> int:
-	return cursor_mask_collision
 
 func init_cursor():
 	if !is_show_cursor:
@@ -58,21 +34,16 @@ func init_cursor():
 			if enable_custom_virtual_cursor:
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 				if !virtual_cursor:
-					virtual_cursor = cursor_virtual_tpl.instance()
-					virtual_cursor.set_texture(cursor_custom)
+					virtual_cursor = Props.CursorVirtualTemplate.instance()
+					virtual_cursor.set_texture(Props.CursorCustom)
 					get_tree().get_root().call_deferred("add_child",virtual_cursor)
-
 					yield(get_tree(),"idle_frame")
-
-					virtual_cursor.set_cursor_mask_collision(cursor_layer_collision)
-					virtual_cursor.set_cursor_mask_collision(cursor_mask_collision)
-					
 					assert(virtual_cursor.connect("entity_over",self,"on_cursor_entity_over") == 0,"Error")
 					assert(virtual_cursor.connect("entity_exit",self,"on_cursor_entity_exit") == 0,"Error")
 				else:
 					virtual_cursor.visible = true
 			else:
-				Input.set_custom_mouse_cursor(cursor_custom)
+				Input.set_custom_mouse_cursor(Props.CursorCustom)
 		else:
 			Input.set_custom_mouse_cursor(null)
 
@@ -91,15 +62,15 @@ func blink_cursor():
 			count_cursor_frames = count_cursor_frames + 1
 			if count_cursor_frames > blink_cursor_time:
 				if enable_custom_virtual_cursor:
-					virtual_cursor.set_texture(cursor_custom_blink)
+					virtual_cursor.set_texture(Props.CursorCustomBlink)
 				else:
-					Input.set_custom_mouse_cursor(cursor_custom_blink)
+					Input.set_custom_mouse_cursor(Props.CursorCustomBlink)
 				count_cursor_frames = -blink_cursor_time
 			elif count_cursor_frames == 0:
 				if enable_custom_virtual_cursor:
-					virtual_cursor.set_texture(cursor_custom)
+					virtual_cursor.set_texture(Props.CursorCustom)
 				else:
-					Input.set_custom_mouse_cursor(cursor_custom)
+					Input.set_custom_mouse_cursor(Props.CursorCustom)
 
 func set_cursor_settings():
 	init_cursor()
@@ -108,10 +79,6 @@ func manage_cursor_input():
 	if enable_input:
 		if is_show_cursor:
 			manage_cursor_position()
-
-func _unhandled_input(event):
-	if event is InputEventMouseMotion:
-		_global_mouse_pos += event.relative
 
 func manage_cursor_position():
 	if !is_hold_cursor:
@@ -145,7 +112,6 @@ func on_cursor_entity_over(body):
 	_cursorEntityOn(body)
 	if !disable_blink_cursor:
 		enable_blink_cursor = true
-		
 	_change_color(virtual_cursor.TipoColor.ROJO)
 
 func on_cursor_entity_exit(body):
@@ -165,3 +131,6 @@ func  _cursorEntityOn(body):
 # warning-ignore:unused_argument
 func _cursorEntityOff(body):
 	pass
+
+func get_target_position()->Vector2:
+	return lookat_position

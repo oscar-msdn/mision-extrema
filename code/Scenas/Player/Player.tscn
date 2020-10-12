@@ -21,187 +21,187 @@
 [ext_resource path="res://Scenas/Player/Selector.gd" type="Script" id=20]
 [ext_resource path="res://Scenas/Player/Field_View.gd" type="Script" id=21]
 
-[sub_resource type="CanvasItemMaterial" id=63]
+[sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 1
 
-[sub_resource type="Curve" id=64]
+[sub_resource type="Curve" id=2]
 min_value = 0.5
 max_value = 1.5
 _data = [ Vector2( 0, 1.5 ), 0.0, -0.509091, 0, 1, Vector2( 1, 0.990909 ), -0.509091, 0.0, 1, 0 ]
 
-[sub_resource type="Gradient" id=65]
+[sub_resource type="Gradient" id=3]
 offsets = PoolRealArray( 0, 0.996711 )
 colors = PoolColorArray( 0.901961, 0.458824, 0.027451, 0.235294, 0.992157, 0.964706, 0.662745, 0.235294 )
 
-[sub_resource type="RectangleShape2D" id=66]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 12, 22 )
 
-[sub_resource type="CanvasItemMaterial" id=67]
+[sub_resource type="CanvasItemMaterial" id=5]
 blend_mode = 1
 
-[sub_resource type="CircleShape2D" id=68]
+[sub_resource type="CircleShape2D" id=6]
 radius = 14.0
 
-[sub_resource type="AnimationNodeAnimation" id=69]
+[sub_resource type="AnimationNodeAnimation" id=7]
 animation = "Armed"
 
-[sub_resource type="AnimationNodeAnimation" id=70]
+[sub_resource type="AnimationNodeAnimation" id=8]
 animation = "Dead"
 
-[sub_resource type="AnimationNodeAnimation" id=71]
+[sub_resource type="AnimationNodeAnimation" id=9]
 animation = "Gun"
 
-[sub_resource type="AnimationNodeAnimation" id=72]
+[sub_resource type="AnimationNodeAnimation" id=10]
 animation = "Hold"
 
-[sub_resource type="AnimationNodeAnimation" id=73]
+[sub_resource type="AnimationNodeAnimation" id=11]
 animation = "Idle"
 
-[sub_resource type="AnimationNodeAnimation" id=74]
+[sub_resource type="AnimationNodeAnimation" id=12]
 animation = "Machine"
 
-[sub_resource type="AnimationNodeAnimation" id=75]
+[sub_resource type="AnimationNodeAnimation" id=13]
 animation = "Reload"
 
-[sub_resource type="AnimationNodeAnimation" id=76]
+[sub_resource type="AnimationNodeAnimation" id=14]
 animation = "Silencer"
 
-[sub_resource type="AnimationNodeAnimation" id=77]
+[sub_resource type="AnimationNodeAnimation" id=15]
 animation = "Stand"
 
-[sub_resource type="AnimationNodeAnimation" id=78]
+[sub_resource type="AnimationNodeAnimation" id=16]
 animation = "Walk"
 
-[sub_resource type="AnimationNodeAnimation" id=79]
+[sub_resource type="AnimationNodeAnimation" id=17]
 animation = "Walk"
 
-[sub_resource type="AnimationNodeAnimation" id=80]
+[sub_resource type="AnimationNodeAnimation" id=18]
 animation = "Walk"
 
-[sub_resource type="AnimationNodeAnimation" id=81]
+[sub_resource type="AnimationNodeAnimation" id=19]
 animation = "Walk"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=82]
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
 advance_condition = "isWalk"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=83]
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
 advance_condition = "isIdle"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=84]
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
 advance_condition = "isWalk"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=85]
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
 advance_condition = "isIdle"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=86]
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=87]
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
 advance_condition = "isHold"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=88]
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
 advance_condition = "isNotHold"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=89]
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
 advance_condition = "isArmed"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=90]
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
 advance_condition = "isArmed"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=91]
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
 advance_condition = "isNotArmed"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=92]
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
 advance_condition = "isReload"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=93]
+[sub_resource type="AnimationNodeStateMachineTransition" id=31]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=94]
+[sub_resource type="AnimationNodeStateMachineTransition" id=32]
 advance_condition = "isGun"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=95]
+[sub_resource type="AnimationNodeStateMachineTransition" id=33]
 advance_condition = "isMachine"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=96]
+[sub_resource type="AnimationNodeStateMachineTransition" id=34]
 advance_condition = "isWalk"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=97]
+[sub_resource type="AnimationNodeStateMachineTransition" id=35]
 advance_condition = "isIdle"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=98]
+[sub_resource type="AnimationNodeStateMachineTransition" id=36]
 advance_condition = "isReload"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=99]
+[sub_resource type="AnimationNodeStateMachineTransition" id=37]
 advance_condition = "isNotArmed"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=100]
+[sub_resource type="AnimationNodeStateMachineTransition" id=38]
 advance_condition = "isNotArmed"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=101]
+[sub_resource type="AnimationNodeStateMachineTransition" id=39]
 advance_condition = "isNotArmed"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=102]
+[sub_resource type="AnimationNodeStateMachineTransition" id=40]
 advance_condition = "isNotArmed"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=103]
+[sub_resource type="AnimationNodeStateMachineTransition" id=41]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=104]
+[sub_resource type="AnimationNodeStateMachineTransition" id=42]
 advance_condition = "isSilencer"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=105]
+[sub_resource type="AnimationNodeStateMachineTransition" id=43]
 advance_condition = "isNotArmed"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=106]
+[sub_resource type="AnimationNodeStateMachineTransition" id=44]
 advance_condition = "isWalk"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=107]
+[sub_resource type="AnimationNodeStateMachineTransition" id=45]
 advance_condition = "isIdle"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=108]
+[sub_resource type="AnimationNodeStateMachineTransition" id=46]
 advance_condition = "isNotArmed"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=109]
+[sub_resource type="AnimationNodeStateMachineTransition" id=47]
 
-[sub_resource type="AnimationNodeStateMachine" id=110]
-states/Armed/node = SubResource( 69 )
+[sub_resource type="AnimationNodeStateMachine" id=48]
+states/Armed/node = SubResource( 7 )
 states/Armed/position = Vector2( 176, 202.076 )
-states/Dead/node = SubResource( 70 )
+states/Dead/node = SubResource( 8 )
 states/Dead/position = Vector2( 973, 320 )
-states/Gun/node = SubResource( 71 )
+states/Gun/node = SubResource( 9 )
 states/Gun/position = Vector2( 464, 202.076 )
-states/Hold/node = SubResource( 72 )
+states/Hold/node = SubResource( 10 )
 states/Hold/position = Vector2( 67, 313 )
-states/Idle/node = SubResource( 73 )
+states/Idle/node = SubResource( 11 )
 states/Idle/position = Vector2( 176, 456 )
-states/Machine/node = SubResource( 74 )
+states/Machine/node = SubResource( 12 )
 states/Machine/position = Vector2( 464, -90.9236 )
-states/Reload/node = SubResource( 75 )
+states/Reload/node = SubResource( 13 )
 states/Reload/position = Vector2( 464, -225.924 )
-states/Silencer/node = SubResource( 76 )
+states/Silencer/node = SubResource( 14 )
 states/Silencer/position = Vector2( 464, 76.076 )
-states/Stand/node = SubResource( 77 )
+states/Stand/node = SubResource( 15 )
 states/Stand/position = Vector2( 714, 320 )
-states/Walk/node = SubResource( 81 )
+states/Walk/node = SubResource( 19 )
 states/Walk/position = Vector2( 973, 456 )
-"states/Walk 2/node" = SubResource( 78 )
+"states/Walk 2/node" = SubResource( 16 )
 "states/Walk 2/position" = Vector2( 973, 202.076 )
-"states/Walk 3/node" = SubResource( 79 )
+"states/Walk 3/node" = SubResource( 17 )
 "states/Walk 3/position" = Vector2( 973, -90.9236 )
-"states/Walk 4/node" = SubResource( 80 )
+"states/Walk 4/node" = SubResource( 18 )
 "states/Walk 4/position" = Vector2( 973, 76.076 )
-transitions = [ "Idle", "Walk", SubResource( 82 ), "Walk", "Idle", SubResource( 83 ), "Gun", "Walk 2", SubResource( 84 ), "Walk 2", "Gun", SubResource( 85 ), "Stand", "Idle", SubResource( 86 ), "Idle", "Hold", SubResource( 87 ), "Hold", "Stand", SubResource( 88 ), "Idle", "Armed", SubResource( 89 ), "Walk", "Armed", SubResource( 90 ), "Armed", "Stand", SubResource( 91 ), "Machine", "Reload", SubResource( 92 ), "Reload", "Machine", SubResource( 93 ), "Armed", "Gun", SubResource( 94 ), "Armed", "Machine", SubResource( 95 ), "Machine", "Walk 3", SubResource( 96 ), "Walk 3", "Machine", SubResource( 97 ), "Walk 3", "Reload", SubResource( 98 ), "Machine", "Stand", SubResource( 99 ), "Gun", "Stand", SubResource( 100 ), "Walk 2", "Stand", SubResource( 101 ), "Walk 3", "Stand", SubResource( 102 ), "Stand", "Dead", SubResource( 103 ), "Armed", "Silencer", SubResource( 104 ), "Silencer", "Stand", SubResource( 105 ), "Silencer", "Walk 4", SubResource( 106 ), "Walk 4", "Silencer", SubResource( 107 ), "Walk 4", "Stand", SubResource( 108 ), "Idle", "Dead", SubResource( 109 ) ]
+transitions = [ "Idle", "Walk", SubResource( 20 ), "Walk", "Idle", SubResource( 21 ), "Gun", "Walk 2", SubResource( 22 ), "Walk 2", "Gun", SubResource( 23 ), "Stand", "Idle", SubResource( 24 ), "Idle", "Hold", SubResource( 25 ), "Hold", "Stand", SubResource( 26 ), "Idle", "Armed", SubResource( 27 ), "Walk", "Armed", SubResource( 28 ), "Armed", "Stand", SubResource( 29 ), "Machine", "Reload", SubResource( 30 ), "Reload", "Machine", SubResource( 31 ), "Armed", "Gun", SubResource( 32 ), "Armed", "Machine", SubResource( 33 ), "Machine", "Walk 3", SubResource( 34 ), "Walk 3", "Machine", SubResource( 35 ), "Walk 3", "Reload", SubResource( 36 ), "Machine", "Stand", SubResource( 37 ), "Gun", "Stand", SubResource( 38 ), "Walk 2", "Stand", SubResource( 39 ), "Walk 3", "Stand", SubResource( 40 ), "Stand", "Dead", SubResource( 41 ), "Armed", "Silencer", SubResource( 42 ), "Silencer", "Stand", SubResource( 43 ), "Silencer", "Walk 4", SubResource( 44 ), "Walk 4", "Silencer", SubResource( 45 ), "Walk 4", "Stand", SubResource( 46 ), "Idle", "Dead", SubResource( 47 ) ]
 start_node = "Idle"
 end_node = "Dead"
 graph_offset = Vector2( -20.4551, 40.8627 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=111]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=49]
 
-[sub_resource type="Animation" id=112]
+[sub_resource type="Animation" id=50]
 length = 0.001
 
-[sub_resource type="Animation" id=113]
+[sub_resource type="Animation" id=51]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("CollisionShape2D/Personaje:modulate")
@@ -216,9 +216,9 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ) ]
 }
 
-[sub_resource type="Animation" id=114]
+[sub_resource type="Animation" id=52]
 
-[sub_resource type="Animation" id=115]
+[sub_resource type="Animation" id=53]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("CollisionShape2D/Personaje:position")
@@ -266,7 +266,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ SubResource( 66 ) ]
+"values": [ SubResource( 4 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("CollisionShape2D/Personaje:scale")
@@ -281,7 +281,7 @@ tracks/4/keys = {
 "values": [ Vector2( 0.851852, 1 ) ]
 }
 
-[sub_resource type="Animation" id=116]
+[sub_resource type="Animation" id=54]
 tracks/0/type = "value"
 tracks/0/path = NodePath("CollisionShape2D/Personaje:texture")
 tracks/0/interp = 1
@@ -319,7 +319,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0.851852, 1 ) ]
 }
 
-[sub_resource type="Animation" id=117]
+[sub_resource type="Animation" id=55]
 tracks/0/type = "value"
 tracks/0/path = NodePath("CollisionShape2D/Personaje:texture")
 tracks/0/interp = 1
@@ -369,7 +369,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0.851852, 1 ) ]
 }
 
-[sub_resource type="Animation" id=118]
+[sub_resource type="Animation" id=56]
 tracks/0/type = "value"
 tracks/0/path = NodePath("CollisionShape2D/Personaje:texture")
 tracks/0/interp = 1
@@ -419,7 +419,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0.851852, 1 ) ]
 }
 
-[sub_resource type="Animation" id=119]
+[sub_resource type="Animation" id=57]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("CollisionShape2D/Personaje:texture")
@@ -458,7 +458,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0.851852, 1 ) ]
 }
 
-[sub_resource type="Animation" id=120]
+[sub_resource type="Animation" id=58]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("CollisionShape2D/Personaje:position")
@@ -509,7 +509,7 @@ tracks/3/keys = {
 "values": [ Vector2( 33, 9 ) ]
 }
 
-[sub_resource type="Animation" id=121]
+[sub_resource type="Animation" id=59]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("CollisionShape2D/Personaje:texture")
@@ -548,7 +548,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0.851852, 1 ) ]
 }
 
-[sub_resource type="Animation" id=122]
+[sub_resource type="Animation" id=60]
 length = 1.5
 loop = true
 tracks/0/type = "value"
@@ -578,15 +578,15 @@ script = ExtResource( 2 )
 
 [node name="LineaDisparo" type="Line2D" parent="."]
 light_mask = 8
-material = SubResource( 63 )
+material = SubResource( 1 )
 points = PoolVector2Array( 61.75, 109.957 )
 width = 1.5
-width_curve = SubResource( 64 )
+width_curve = SubResource( 2 )
 default_color = Color( 0.964706, 0.85098, 0.611765, 1 )
-gradient = SubResource( 65 )
+gradient = SubResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 66 )
+shape = SubResource( 4 )
 
 [node name="Personaje" type="Sprite" parent="CollisionShape2D"]
 light_mask = -2147483644
@@ -603,7 +603,7 @@ z_index = 2
 [node name="Crosshair" type="Sprite" parent="Mira"]
 modulate = Color( 1, 1, 1, 0.501961 )
 light_mask = -2147483644
-material = SubResource( 67 )
+material = SubResource( 5 )
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 84, 429, 34, 34 )
@@ -625,12 +625,12 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mira/Selector"]
-shape = SubResource( 68 )
+shape = SubResource( 6 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 110 )
+tree_root = SubResource( 48 )
 anim_player = NodePath("../AnimationPlayer")
-parameters/playback = SubResource( 111 )
+parameters/playback = SubResource( 49 )
 parameters/conditions/isArmed = false
 parameters/conditions/isGun = false
 parameters/conditions/isHold = false
@@ -645,17 +645,17 @@ parameters/conditions/isWalk = false
 [node name="AnimationPlayer" parent="." instance=ExtResource( 17 )]
 
 [node name="AnimationPlayerHitman" parent="." instance=ExtResource( 17 )]
-anims/Armed = SubResource( 112 )
-anims/Dead = SubResource( 113 )
-anims/Empty = SubResource( 114 )
-anims/Gun = SubResource( 115 )
-anims/Hold = SubResource( 116 )
-anims/Idle = SubResource( 117 )
-anims/Machine = SubResource( 118 )
-anims/Reload = SubResource( 119 )
-anims/Silencer = SubResource( 120 )
-anims/Stand = SubResource( 121 )
-anims/Walk = SubResource( 122 )
+anims/Armed = SubResource( 50 )
+anims/Dead = SubResource( 51 )
+anims/Empty = SubResource( 52 )
+anims/Gun = SubResource( 53 )
+anims/Hold = SubResource( 54 )
+anims/Idle = SubResource( 55 )
+anims/Machine = SubResource( 56 )
+anims/Reload = SubResource( 57 )
+anims/Silencer = SubResource( 58 )
+anims/Stand = SubResource( 59 )
+anims/Walk = SubResource( 60 )
 
 [node name="AnimationPlayerAzul" parent="." instance=ExtResource( 18 )]
 

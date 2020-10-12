@@ -9,10 +9,10 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "SceneTree",
-"class": "CustomLoop",
+"base": "Area2D",
+"class": "Bullet",
 "language": "GDScript",
-"path": "res://Scripts/main_loop.gd"
+"path": "res://Scenas/Test Topdown Move/Props/bullet.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "EntityBase",
@@ -59,10 +59,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Core/player_entity.gd"
 }, {
-"base": "Node",
-"class": "Utils",
+"base": "Reference",
+"class": "Props",
 "language": "GDScript",
-"path": "res://Scripts/Utils.gd"
+"path": "res://Scripts/Core/Utils/props.gd"
+}, {
+"base": "Reference",
+"class": "Util",
+"language": "GDScript",
+"path": "res://Scripts/Core/Utils/Util.gd"
 }, {
 "base": "EntityBase",
 "class": "WeaponBase",
@@ -70,7 +75,7 @@ _global_script_classes=[ {
 "path": "res://Scripts/Core/weapon_base.gd"
 } ]
 _global_script_class_icons={
-"CustomLoop": "",
+"Bullet": "",
 "EntityBase": "",
 "EntityController": "",
 "EntityHealth": "",
@@ -80,7 +85,8 @@ _global_script_class_icons={
 "NpcEntity": "",
 "PlayerController": "",
 "PlayerEntity": "",
-"Utils": "",
+"Props": "",
+"Util": "",
 "WeaponBase": ""
 }
 
@@ -93,8 +99,9 @@ config/icon="res://icon.png"
 
 [autoload]
 
+Helper="*res://Scripts/Core/Utils/helper.gd"
 Events="*res://Scripts/Events.gd"
-Main="*res://Scripts/Main.gd"
+Utils="*res://Scripts/Utils.gd"
 
 [display]
 
@@ -197,17 +204,15 @@ pointing/emulate_mouse_from_touch=false
 
 [layer_names]
 
-2d_render/layer_1="Piso"
-2d_physics/layer_1="Player"
-2d_render/layer_2="Props"
-2d_physics/layer_2="Enemigos"
-2d_render/layer_3="Player"
-2d_physics/layer_3="Ambiente"
-2d_render/layer_4="Paredes"
-2d_render/layer_5="FX"
-2d_render/layer_6="Enemigos"
-2d_render/layer_7="Techo"
-2d_physics/layer_10="Muertos"
+2d_render/layer_1="Floor"
+2d_physics/layer_1="walls"
+2d_render/layer_2="Walls"
+2d_physics/layer_2="boxes"
+2d_render/layer_3="Ememies"
+2d_render/layer_4="Player"
+2d_render/layer_5="Props"
+2d_physics/layer_5="player"
+2d_physics/layer_6="enemies"
 
 [physics]
 

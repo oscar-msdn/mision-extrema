@@ -1,7 +1,12 @@
 extends Node
-class_name Utils
 
 enum ALERTAS { NPC_DEAD,NA=-1 }
+
+func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+#	add_to_group("Main")
+#	Utils.Subscribir(Events.SIGNAL_PLAYER_DEAD,self,"on_player_dead")
+#	#Events.connect(Events.SIGNAL_PLAYER_DEAD,self,"on_player_dead")
 
 func Subscribir(evento:String,caller,metodo:String)->void:
 # warning-ignore:return_value_discarded
@@ -29,16 +34,5 @@ func Invoke(evento:String,caller,args:Array=[])->void:
 	
 	print(caller," -> Invoke:",evento, " with ", args)
 
-#func Screenshoot()->void:
-#	print("Screenshot")
-#	get_viewport().queue_screen_capture()
-#	yield(get_tree(), "idle_frame")
-#	yield(get_tree(), "idle_frame")
-#	var screenshot = get_viewport().get_screen_capture()
-#	screenshot.save_png("user://screenshot.png")
-	
-static func set_enabler_entity(object:Node,stop=false):
-	object.set_process_internal(stop)
-	object.set_process(stop)
-	object.set_physics_process(stop) 
-	object.set_physics_process_internal(stop)
+
+
