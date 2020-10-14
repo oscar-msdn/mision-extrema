@@ -3,7 +3,7 @@ extends NpcController
 class_name NpcEntity
 
 func _init():
-	add_to_group("NPC")
+	add_to_group(Util.GROUP_NPC)
 	collision_layer = Util.LAYER_ENEMY
 	collision_mask = Util.MASK_ENEMY
 	z_index = Util.ZINDEX_ENEMY

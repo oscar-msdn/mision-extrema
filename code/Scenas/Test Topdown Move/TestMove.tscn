@@ -3,18 +3,21 @@
 [ext_resource path="res://Scenas/Test Topdown Move/Props/gato_player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenas/Test Topdown Move/Props/gato_enemy.tscn" type="PackedScene" id=2]
 
-[node name="TestMove" type="Node2D"]
+[node name="TestMove" type="Node"]
 
 [node name="gato_player" parent="." instance=ExtResource( 1 )]
 light_mask = 8
+z_index = 1
+z_as_relative = false
 
 [node name="Camera2D" type="Camera2D" parent="gato_player"]
 current = true
 
 [node name="gato_enemy" parent="." instance=ExtResource( 2 )]
-light_mask = 4
-position = Vector2( 10.623, -253.214 )
+position = Vector2( 411.529, -130.255 )
 
 [node name="gato_enemy2" parent="." instance=ExtResource( 2 )]
-light_mask = 16
-position = Vector2( 519.913, -253.214 )
+position = Vector2( 212.145, -129.619 )
+
+[node name="gato_enemy3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 603.161, -129.619 )

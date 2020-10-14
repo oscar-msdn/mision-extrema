@@ -42,7 +42,7 @@ func _move_entity(delta):
 var old_lookat_position := Vector2.ZERO
 var rotation_to :float = 0
 func _get_look_at(delta):
-	if old_lookat_position != lookat_position:# or velocity_lineal != Vector2.ZERO:
+	if old_lookat_position != lookat_position or velocity_lineal != Vector2.ZERO:
 		old_lookat_position = lookat_position
 		rotation_to =  lookat_position.angle_to_point(position)
 	_custom_look_at(delta)

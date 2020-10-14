@@ -53,7 +53,8 @@ func _on_Bullet_body_entered(body):
 			if body.has_method("get_shield"):
 				shield = body.get_shield()
 			if body.has_method("give_damage"):
-				body.give_damage(current_damage,global_transform)
+				print("bullet_hit->",body,current_damage)
+				body.give_damage(current_damage,global_position)
 				current_damage -= shield
 				if current_damage <= 0:
 					call_deferred("drop_bullet")

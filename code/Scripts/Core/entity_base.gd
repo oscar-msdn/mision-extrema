@@ -2,33 +2,50 @@ extends KinematicBody2D
 #Clase base para cualquier entidad
 class_name EntityBase
 
-export(bool) var enable_laser : bool = false
-
-var is_update_draw: bool = false
-
-#
 #func _ready():
 #	pass
-#
+
 #func _process(delta):
 #	pass
-#
 
-func draw_Laser(origin, target)->void:
-	if enable_laser:
-		var laserColor = Color(1.0,.329,.298,0.1)
-		var laserPointColor = Color(1.0,.329,.298,0.5)
-		target = (target - origin ) * 100
-		var space_state = get_world_2d().direct_space_state
-		var result = space_state.intersect_ray(origin,target,[self])
-		if result:
-			target = result.position
-		draw_line(transform.xform_inv(origin),transform.xform_inv(target),laserColor,1.5)
-		draw_circle(transform.xform_inv(target),2,laserPointColor)
+var segment = SegmentShape2D.new()
+var query = Physics2DShapeQueryParameters.new()
+func fire_shoot_raycast(origin,target,damage=100,max_hits=4) -> void:
+	target = (target - origin) * 100
+	segment.set_a(origin)
+	segment.set_b(target)
+	var space_state = get_world_2d().direct_space_state
+	query.set_shape(segment)
+	var hits = space_state.intersect_shape(query, max_hits)
+	if hits:
+		print("hit-->",hits)
+		var shield := 0
+		var body = null
+		var current_damage = damage
+		for hit in hits:
+			body = hit.collider
+			if body:
+				if body.has_method("get_shield"):
+					shield = body.get_shield()
+					if body.has_method("give_damage"):
+						print("hit->",body,current_damage)
+						body.give_damage(current_damage,hit.position)
+						current_damage -= shield
+						if current_damage <= 0:
+							break
 
-# warning-ignore:unused_argument
-func _physics_process(delta):
-	if enable_laser:
-		if is_update_draw:
-			is_update_draw = false
-			update()
+func raycast(origin,target,group) -> bool:
+	target = (target - origin ) * 100
+	var direct_space = get_world_2d().direct_space_state
+	var hit = direct_space.intersect_ray(origin,target,[self])
+	if hit:
+		var body = hit.collider
+		if body:
+			var result = body.is_in_group(group)
+			return result
+	return false
+
+#func _physics_process(delta):
+#	pass
+
+

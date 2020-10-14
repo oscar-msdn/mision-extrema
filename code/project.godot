@@ -223,8 +223,7 @@ pointing/emulate_mouse_from_touch=false
 
 quality/driver/driver_name="GLES2"
 quality/2d/use_nvidia_rect_flicker_workaround=true
-quality/intended_usage/framebuffer_allocation=0
-quality/intended_usage/framebuffer_allocation.mobile=0
+quality/intended_usage/framebuffer_allocation.mobile=2
 quality/2d/use_pixel_snap=true
 threads/thread_model=2
 vram_compression/import_etc=true
@@ -232,4 +231,5 @@ batching/lights/scissor_area_threshold=0.0
 gles2/compatibility/disable_half_float=true
 batching/precision/uv_contract=true
 environment/default_clear_color=Color( 0, 0, 0, 1 )
+quality/depth/hdr.mobile=true
 environment/default_environment="res://default_env.tres"

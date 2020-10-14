@@ -21,7 +21,7 @@ func get_shield():
 	return shield
 
 # warning-ignore:unused_argument
-func give_damage(value,current_transform):
+func give_damage(value,position)->void:
 	if is_alive:
 		health =  health - value
 		if health > 0:
