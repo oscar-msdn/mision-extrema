@@ -39,6 +39,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Core/input_controller.gd"
 }, {
+"base": "Line2D",
+"class": "Laser",
+"language": "GDScript",
+"path": "res://Scenas/Test Topdown Move/Props/Laser.gd"
+}, {
 "base": "EntityHealth",
 "class": "NpcController",
 "language": "GDScript",
@@ -81,6 +86,7 @@ _global_script_class_icons={
 "EntityHealth": "",
 "GunWeapon": "",
 "InputController": "",
+"Laser": "",
 "NpcController": "",
 "NpcEntity": "",
 "PlayerController": "",
@@ -221,7 +227,6 @@ pointing/emulate_mouse_from_touch=false
 
 [rendering]
 
-quality/driver/driver_name="GLES2"
 quality/2d/use_nvidia_rect_flicker_workaround=true
 quality/intended_usage/framebuffer_allocation.mobile=2
 quality/2d/use_pixel_snap=true

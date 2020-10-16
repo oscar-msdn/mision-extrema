@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenas/Test Topdown Move/Props/Laser.gd" type="Script" id=1]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0.0289532, 1 )
+colors = PoolColorArray( 0.691406, 0.691406, 0.691406, 1, 1, 1, 1, 1 )
+
+[node name="Laser" type="Line2D"]
+modulate = Color( 6.35686, 0, 0, 1 )
+gradient = SubResource( 1 )
+antialiased = true
+script = ExtResource( 1 )

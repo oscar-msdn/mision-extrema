@@ -29,4 +29,4 @@ func restore_color():
 	modulate = TipoColor.BLANCO
 
 func set_change_color(color):
-	modulate = color
+	modulate = color 
