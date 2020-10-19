@@ -2,7 +2,7 @@ extends PlayerController
 #Clase que representa una entidad controlada por el jugador
 class_name PlayerEntity
 
-export(bool) var enable_laser : bool = true
+export(bool) var enable_laser : bool = false
 
 var is_update_draw: bool = false
 var current_body = null
@@ -14,7 +14,7 @@ func _init():
 	is_show_cursor = true
 	enable_strafe = true
 	is_simple_mode = false
-	enable_laser = true
+	enable_laser = false
 	add_to_group(Util.GROUP_PLAYER)
 	collision_layer = Util.LAYER_PLAYER
 	collision_mask = Util.MASK_PLAYER
@@ -66,7 +66,7 @@ func _change_color(color):
 
 onready var end_of_gun := $EndOfGun
 func _Action():
-	fire()
+	#fire()
 	print("action-->")
 	
 func fire():
@@ -87,9 +87,11 @@ func _physics_process(delta):
 	
 onready var _laser := $Laser
 func set_laser_settings():
+	_laser.set_visible(enable_laser)
 	var from = end_of_gun.global_position
 	#_laser.global_position = from
 	_laser.set_origin(transform.xform_inv(from))
+		
 
 func laser_update():
 	if enable_laser:

@@ -2,7 +2,7 @@ extends EntityController
 #Clase base de gestion de salud
 class_name EntityHealth
 
-export(int) var shield = 50
+export(int) var shield = 100
 export(int) var health = 100
 export(bool)var is_alive = true
 export(bool)var is_alive_stop = false
