@@ -1,7 +1,7 @@
 extends Area2D
 class_name Bullet
 
-export(float) var speed = 2000
+export(float) var speed = 3000
 export(float) var damage = 100
 export(float) var traza_lenght = 300
 

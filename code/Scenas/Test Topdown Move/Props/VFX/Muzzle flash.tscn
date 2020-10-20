@@ -1,0 +1,84 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Sprites/Varios/particlePack_1.1/PNG (Transparent)/Rotated/muzzle_04_rotated.png" type="Texture" id=1]
+[ext_resource path="res://Scenas/Test Topdown Move/Props/VFX/Muzzleflash.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/Varios/particlePack_1.1/PNG (Transparent)/smoke_04.png" type="Texture" id=3]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+blend_mode = 1
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.0355191, 0.0928962, 0.188525 )
+colors = PoolColorArray( 0, 0, 0, 0, 1, 1, 1, 0.8, 1.89, 0.75, 0.13, 0.8, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+lifetime_randomness = 0.5
+emission_shape = 1
+emission_sphere_radius = 27.75
+flag_disable_z = true
+spread = 0.0
+flatness = 0.5
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 80.0
+initial_velocity_random = 0.5
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 4.0
+linear_accel_random = 0.5
+color_ramp = SubResource( 3 )
+
+[sub_resource type="CanvasItemMaterial" id=5]
+blend_mode = 1
+
+[sub_resource type="Gradient" id=6]
+offsets = PoolRealArray( 0, 0.825137 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
+
+[sub_resource type="ParticlesMaterial" id=12]
+emission_shape = 1
+emission_sphere_radius = 8.82
+flag_disable_z = true
+spread = 163.96
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 14.85
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 135.5
+angle_random = 1.0
+color_ramp = SubResource( 7 )
+
+[node name="MuzzleFlash" type="Particles2D"]
+modulate = Color( 3, 3, 3, 0.764706 )
+material = SubResource( 1 )
+position = Vector2( -71.276, -0.0892944 )
+scale = Vector2( 0.2, 0.2 )
+emitting = false
+amount = 4
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource( 4 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Smoke" type="Particles2D" parent="."]
+modulate = Color( 1.50196, 1.50196, 1.50196, 0.407843 )
+material = SubResource( 5 )
+position = Vector2( 488.952, 0.514912 )
+scale = Vector2( 2.5, 1.5 )
+emitting = false
+amount = 4
+lifetime = 10.0
+one_shot = true
+preprocess = 0.1
+speed_scale = 25.0
+explosiveness = 1.0
+process_material = SubResource( 12 )
+texture = ExtResource( 3 )

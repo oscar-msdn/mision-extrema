@@ -3,6 +3,13 @@ extends Node
 func _init():
 	add_to_group("helper")
 
+func instance_root(origin,target,object):
+	var direction = origin.direction_to(target)
+	object.global_position = origin + direction * 40.0
+	object.rotation = direction.angle()
+	
+	get_tree().get_root().call_deferred("add_child",object)
+	
 func fire_bullet(position,target):
 	var bullet = Props.BulletTemplate.instance()
 	bullet.set_values(position,target)

@@ -68,11 +68,16 @@ onready var end_of_gun := $EndOfGun
 func _Action():
 	#fire()
 	print("action-->")
-	
+
+export(PackedScene) var muzzle
 func fire():
 	var from = end_of_gun.global_position
 	var to = get_target_position()
 	Helper.fire_bullet(from,to) 
+	
+	var instance = muzzle.instance()
+	Helper.instance_root(from,to,instance)
+	
 	_fire_action = true
 
 var _fire_action:= false
