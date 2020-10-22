@@ -7,9 +7,21 @@ func instance_root(origin,target,object):
 	var direction = origin.direction_to(target)
 	object.global_position = origin + direction * 40.0
 	object.rotation = direction.angle()
-	
 	get_tree().get_root().call_deferred("add_child",object)
-	
+
+func blood_splater(position,direction):
+	var blood = Props.BloodSplater.instance()
+	blood.global_position = position
+	blood.rotation = direction.angle()
+	get_tree().get_root().call_deferred("add_child",blood)
+
+func muzzle_flash(origin,target):
+	var muzzle = Props.MuzzleFlash.instance()
+	var direction = origin.direction_to(target)
+	muzzle.global_position = origin + direction * 40.0
+	muzzle.rotation = direction.angle()
+	get_tree().get_root().call_deferred("add_child",muzzle)
+
 func fire_bullet(position,target):
 	var bullet = Props.BulletTemplate.instance()
 	bullet.set_values(position,target)

@@ -5,4 +5,5 @@ const BulletTemplate :PackedScene = preload("res://Scenas/Test Topdown Move/Prop
 const CursorCustom :StreamTexture = preload("res://Sprites/Varios/Cursores/Outline/crosshair007.png")
 const CursorCustomBlink :StreamTexture = preload("res://Sprites/Varios/Cursores/Outline/crosshair009.png")
 const GatoEnemyTemplate :PackedScene = preload("res://Scenas/Test Topdown Move/Props/gato_enemy.tscn")
-
+const MuzzleFlash :PackedScene = preload("res://Scenas/Test Topdown Move/Props/VFX/Muzzle_flash.tscn")
+const BloodSplater :PackedScene = preload("res://Scenas/Test Topdown Move/Props/VFX/Blood_splater.tscn")

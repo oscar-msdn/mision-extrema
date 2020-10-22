@@ -47,7 +47,7 @@ func _physics_process(delta):
 			
 		time_life_counter += delta
 		if time_life_counter >= KILL_TIMER:
-			call_deferred("drop_bullet")
+			drop_bullet()
 
 func drop_bullet():
 	if is_alive:
@@ -70,10 +70,10 @@ func _on_Bullet_body_entered(body):
 				shield = body.get_shield()
 			if body.has_method("give_damage"):
 				print("bullet_hit->",body,current_damage)
-				body.give_damage(current_damage,global_position)
+				body.give_damage(current_damage,global_position,direction)
 				current_damage -= shield
 				if current_damage <= 0:
-					call_deferred("drop_bullet")
+					drop_bullet()
 
 # warning-ignore:unused_argument
 func _on_Bullet_body_exited(body):

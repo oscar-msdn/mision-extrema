@@ -21,18 +21,18 @@ func get_shield():
 	return shield
 
 # warning-ignore:unused_argument
-func give_damage(value,position)->void:
+func give_damage(value,position,direction)->void:
 	if is_alive:
 		health =  health - value
 		if health > 0:
-			_health_changed(health)
+			_health_changed(health,position,direction)
 		else:
 			is_alive = false
-			_entity_died()
+			_entity_died(position,direction)
 
-# warning-ignore:unused_argument
-func _health_changed(value):
+func _health_changed(value,_position=Vector2.ZERO,_direction=Vector2.ZERO):
 	pass
 
-func _entity_died():
+
+func _entity_died(_position=Vector2.ZERO,_direction=Vector2.ZERO):
 	pass

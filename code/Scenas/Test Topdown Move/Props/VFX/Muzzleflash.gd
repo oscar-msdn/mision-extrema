@@ -1,6 +1,6 @@
 extends Particles2D
 
-const KILL_TIMER = 1.0
+const KILL_TIMER = 0.3
 var time_life_counter := 0.0
 var is_alive := true
 
@@ -18,7 +18,7 @@ func _physics_process(delta):
 	if is_alive:
 		time_life_counter += delta
 		if time_life_counter >= KILL_TIMER:
-			call_deferred("_drop_")
+			_drop_()
 
 func _drop_():
 	if is_alive:

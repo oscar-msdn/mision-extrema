@@ -9,6 +9,8 @@ dof_blur_near_distance = 1.65
 dof_blur_near_transition = 0.33
 dof_blur_near_quality = 2
 glow_enabled = true
+glow_levels/2 = true
+glow_levels/4 = true
 glow_bicubic_upscale = true
 
 [node name="TestMove" type="Node"]
@@ -29,6 +31,24 @@ position = Vector2( 212.145, -129.619 )
 
 [node name="gato_enemy3" parent="." instance=ExtResource( 2 )]
 position = Vector2( 603.161, -129.619 )
+
+[node name="gato_enemy4" parent="." instance=ExtResource( 2 )]
+position = Vector2( -759.112, -246.072 )
+
+[node name="gato_enemy5" parent="." instance=ExtResource( 2 )]
+position = Vector2( -958.496, -245.436 )
+
+[node name="gato_enemy6" parent="." instance=ExtResource( 2 )]
+position = Vector2( -567.48, -245.436 )
+
+[node name="gato_enemy7" parent="." instance=ExtResource( 2 )]
+position = Vector2( -46.3929, -744.975 )
+
+[node name="gato_enemy8" parent="." instance=ExtResource( 2 )]
+position = Vector2( -245.777, -744.339 )
+
+[node name="gato_enemy9" parent="." instance=ExtResource( 2 )]
+position = Vector2( 145.239, -744.339 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )

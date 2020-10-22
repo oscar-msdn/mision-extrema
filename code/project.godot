@@ -119,7 +119,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "codeandweb.texturepacker", "godot-kra-psd-importer" )
+enabled=PoolStringArray( "codeandweb.texturepacker" )
 
 [input]
 
@@ -220,9 +220,14 @@ pointing/emulate_mouse_from_touch=false
 2d_physics/layer_5="player"
 2d_physics/layer_6="enemies"
 
+[memory]
+
+limits/multithreaded_server/rid_pool_prealloc=120
+
 [physics]
 
 2d/thread_model=2
+2d/time_before_sleep=0.1
 
 [rendering]
 
@@ -231,7 +236,8 @@ quality/intended_usage/framebuffer_allocation.mobile=2
 quality/2d/use_pixel_snap=true
 threads/thread_model=2
 vram_compression/import_etc=true
-batching/lights/scissor_area_threshold=0.0
+quality/spatial_partitioning/render_tree_balance=0.5
+batching/options/single_rect_fallback=true
 gles2/compatibility/disable_half_float=true
 batching/precision/uv_contract=true
 environment/default_clear_color=Color( 0.188235, 0.188235, 0.188235, 1 )

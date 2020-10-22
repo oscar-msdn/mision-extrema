@@ -9,8 +9,10 @@ func _init():
 	z_index = Util.ZINDEX_ENEMY
 	z_as_relative = false
 
-func _health_changed(value):
+func _health_changed(value,_position=Vector2.ZERO,_direction=Vector2.ZERO):
 	print("-->NPC_health->",value)
 
-func _entity_died():
+func _entity_died(_position=Vector2.ZERO,_direction=Vector2.ZERO):
 	print("-->NPC_died")
+	Helper.blood_splater(_position,_direction)
+	queue_free()
