@@ -14,5 +14,11 @@ func _health_changed(value,_position=Vector2.ZERO,_direction=Vector2.ZERO):
 
 func _entity_died(_position=Vector2.ZERO,_direction=Vector2.ZERO):
 	print("-->NPC_died")
+# warning-ignore:return_value_discarded
 	Helper.blood_splater(_position,_direction)
+	var smoke = Helper.smoke(_position)
+	smoke.modulate *= Color.chocolate 
+	smoke.modulate.r *= 2.0
+	smoke.scale *= 0.3
+	smoke.FACTOR = 2.0 
 	queue_free()

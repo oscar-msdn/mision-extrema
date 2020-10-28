@@ -1,6 +1,6 @@
 extends Particles2D
 
-const KILL_TIMER = 0.3
+export(float) var KILL_TIMER = 0.5
 var time_life_counter := 0.0
 var is_alive := true
 
@@ -9,12 +9,11 @@ func _init():
 	z_as_relative = false
 
 func _ready():
-	$Smoke.z_as_relative = false
-	$Smoke.z_index = Util.ZINDEX_BULLET
+	var smoke = Helper.smoke($Position2D.global_position)
+	smoke.scale *= 0.25
 	emitting = true
-	$Smoke.emitting = true
-	
-func _physics_process(delta):
+
+func _process(delta):
 	if is_alive:
 		time_life_counter += delta
 		if time_life_counter >= KILL_TIMER:

@@ -15,7 +15,7 @@ func _init():
 	is_show_cursor = true
 	enable_strafe = true
 	is_simple_mode = false
-	enable_laser = false
+	enable_laser = true
 	laser_line2d = false
 	add_to_group(Util.GROUP_PLAYER)
 	collision_layer = Util.LAYER_PLAYER
@@ -116,8 +116,8 @@ func _draw():
 			draw_Laser(from,to)
 
 func draw_Laser(origin:Vector2 ,target:Vector2 )->void:
-	var laserColor = Color(1.5,.329,.298,0.1)
-	var laserPointColor = Color(3.0,.329,.298,0.2)
+	var laserColor = Color(5.0,0.0,0.0,0.5) #Color(5.0,.329,.298,0.2)
+	var laserPointColor = Color(7.0,0.0,0.0,1.0) #Color(10.0,.329,.298,0.3)
 	target = (target - origin) * 100
 	var space_state = get_world_2d().direct_space_state
 	var result = space_state.intersect_ray(origin,target,[self])

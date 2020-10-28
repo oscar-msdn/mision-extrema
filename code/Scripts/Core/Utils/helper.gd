@@ -2,6 +2,11 @@ extends Node
 
 func _init():
 	add_to_group("helper")
+	
+func add_child_to_root(object,position:=null):
+	if position:
+		object.global_position = position
+	get_tree().get_root().call_deferred("add_child",object)
 
 func instance_root(origin,target,object):
 	var direction = origin.direction_to(target)
@@ -9,23 +14,42 @@ func instance_root(origin,target,object):
 	object.rotation = direction.angle()
 	get_tree().get_root().call_deferred("add_child",object)
 
-func blood_splater(position,direction):
+func blood_splater(position,direction)->Object:
 	var blood = Props.BloodSplater.instance()
 	blood.global_position = position
 	blood.rotation = direction.angle()
 	get_tree().get_root().call_deferred("add_child",blood)
+	blood.emitting = true
+	
+	var bloods = Props.BloodSparks.instance()
+	bloods.global_position = position
+	bloods.rotation = direction.angle()
+	bloods.process_material.angle = rad2deg(direction.angle())
+	get_tree().get_root().call_deferred("add_child",bloods)
+	bloods.emitting = true
+	
+	return bloods
 
-func muzzle_flash(origin,target):
+func smoke(position,isadd:=true)->Object:
+	var smoke = Props.Smoke.instance()
+	smoke.global_position = position
+	if isadd:
+		get_tree().get_root().call_deferred("add_child",smoke)
+	return smoke
+
+func muzzle_flash(origin,target)->Object:
 	var muzzle = Props.MuzzleFlash.instance()
 	var direction = origin.direction_to(target)
 	muzzle.global_position = origin + direction * 40.0
 	muzzle.rotation = direction.angle()
 	get_tree().get_root().call_deferred("add_child",muzzle)
+	return muzzle
 
-func fire_bullet(position,target):
+func fire_bullet(position,target)->Object:
 	var bullet = Props.BulletTemplate.instance()
 	bullet.set_values(position,target)
 	get_tree().get_root().call_deferred("add_child",bullet)
+	return bullet
 
 func set_enabler_entity(object:Node,stop=false):
 	object.set_process_internal(stop)
