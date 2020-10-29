@@ -1,52 +1,80 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Sprites/Ember/ember.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/Manchas/Normal/Recurso 4.png" type="Texture" id=3]
+[ext_resource path="res://Scenas/Test Topdown Move/Props/VFX/Blood_sparks.gd" type="Script" id=4]
 
-[sub_resource type="Gradient" id=8]
+[sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=9]
-gradient = SubResource( 8 )
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
 
-[sub_resource type="Curve" id=10]
-max_value = 100.0
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.261719, 100 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=11]
-curve = SubResource( 10 )
-
-[sub_resource type="ParticlesMaterial" id=7]
+[sub_resource type="ParticlesMaterial" id=8]
 lifetime_randomness = 0.5
 flag_disable_z = true
-direction = Vector3( -1, 0, 0 )
+direction = Vector3( 0, 1, 0 )
 gravity = Vector3( 0, 0, 0 )
-initial_velocity = 350.0
-initial_velocity_random = 1.0
-angular_velocity = 254.12
-angular_velocity_random = 1.0
-orbit_velocity = 0.1
+initial_velocity = 100.0
+initial_velocity_random = 0.5
+orbit_velocity = 0.0
 orbit_velocity_random = 1.0
-radial_accel = -50.0
-radial_accel_random = 1.0
-tangential_accel = 100.0
-tangential_accel_random = 1.0
-damping = 30.0
-damping_random = 0.5
-damping_curve = SubResource( 11 )
-scale = 0.03
-scale_random = 0.04
-color_ramp = SubResource( 9 )
-hue_variation = -0.26
-hue_variation_random = 1.0
+linear_accel = 100.0
+tangential_accel = 17.98
+damping = 43.26
+damping_random = 0.44
+scale = 0.5
+scale_random = 0.1
+color_ramp = SubResource( 2 )
+
+[sub_resource type="AnimatedTexture" id=7]
+flags = 4
+frame_0/texture = ExtResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=9]
+lifetime_randomness = 0.5
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 100.0
+initial_velocity_random = 0.5
+orbit_velocity = 0.0
+orbit_velocity_random = 1.0
+linear_accel = 100.0
+tangential_accel = 17.98
+damping = 43.26
+damping_random = 0.44
+scale = 0.5
+scale_random = 0.1
+color_ramp = SubResource( 2 )
 
 [node name="Blood_sparks" type="Particles2D"]
-modulate = Color( 5, 5, 5, 1 )
+modulate = Color( 0.921569, 0.0901961, 0.0901961, 1 )
 emitting = false
-amount = 20
+amount = 25
 one_shot = true
-explosiveness = 1.0
+speed_scale = 2.0
+explosiveness = 0.87
 randomness = 0.5
-visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = false
-process_material = SubResource( 7 )
-texture = ExtResource( 1 )
+process_material = SubResource( 8 )
+texture = SubResource( 7 )
+script = ExtResource( 4 )
+__meta__ = {
+"_editor_description_": ""
+}
+KILL_TIMER = 20.0
+
+[node name="Blood_sparks_sub" type="Particles2D" parent="."]
+modulate = Color( 0.921569, 0.0901961, 0.0901961, 1 )
+emitting = false
+amount = 25
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.87
+randomness = 0.5
+local_coords = false
+process_material = SubResource( 9 )
+texture = SubResource( 7 )
+__meta__ = {
+"_editor_description_": ""
+}

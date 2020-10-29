@@ -28,39 +28,35 @@ func _ready():
 	set_laser_settings()
 	
 func _MenuCursorDown():
-	print("Menu on->")
 	is_hold_cursor = true
 
 func _MenuCursorUp():
-	print("Menu off->")
 	is_hold_cursor = false
 
 func _cursorEntityOn(body):
 	current_body = body
-	print("On->",body)
 
 func _cursorEntityOff(body):
 	current_body = null
-	print("Exit->",body)
 
 func _Option():
-	print("opt->")
+	pass
 	
 func _OptionSpecial():
-	print("opt_special->")
+	pass
 
 func _ActionOn():
-	print("action_on->")
+	pass
 	fire()
 
 func _ActionOff():
-	print("action_off->")
+	pass
 
 func _health_changed(value,_position=Vector2.ZERO,_direction=Vector2.ZERO):
-	print("player_health->",value)
+	pass
 
 func _entity_died(_position=Vector2.ZERO,_direction=Vector2.ZERO):
-	print("player_died")
+	pass
 
 func _change_color(color):
 	if current_body != self:
@@ -69,7 +65,7 @@ func _change_color(color):
 onready var end_of_gun := $EndOfGun
 func _Action():
 	#fire()
-	print("action-->")
+	pass
 
 func fire():
 	var from = end_of_gun.global_position

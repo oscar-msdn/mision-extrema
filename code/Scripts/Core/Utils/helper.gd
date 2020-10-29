@@ -14,21 +14,21 @@ func instance_root(origin,target,object):
 	object.rotation = direction.angle()
 	get_tree().get_root().call_deferred("add_child",object)
 
+func blood_splarks(position,direction)->Object:
+	var bloods = Props.BloodSparks.instance()
+	bloods.global_position = position
+	bloods.rotation = direction.angle()
+	get_tree().get_root().call_deferred("add_child",bloods)
+	bloods.emitting = true
+	return bloods
+
 func blood_splater(position,direction)->Object:
 	var blood = Props.BloodSplater.instance()
 	blood.global_position = position
 	blood.rotation = direction.angle()
 	get_tree().get_root().call_deferred("add_child",blood)
 	blood.emitting = true
-	
-	var bloods = Props.BloodSparks.instance()
-	bloods.global_position = position
-	bloods.rotation = direction.angle()
-	bloods.process_material.angle = rad2deg(direction.angle())
-	get_tree().get_root().call_deferred("add_child",bloods)
-	bloods.emitting = true
-	
-	return bloods
+	return blood
 
 func smoke(position,isadd:=true)->Object:
 	var smoke = Props.Smoke.instance()

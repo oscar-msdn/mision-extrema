@@ -683,9 +683,7 @@ func SubscribirEventos()->void:
 		Utils.Subscribir(Events.SIGNAL_NPC_ALERT,self,"_on_NPC_ALERT_PROCESS")
 
 func _on_ViewField_mouse_entered():
-	print("mouse entered")
 	pass # Replace with function body.
 
 func _on_ViewField_mouse_exited():
-	print("mouse exited")
 	pass # Replace with function body.

@@ -69,7 +69,6 @@ func _on_Bullet_body_entered(body):
 			if body.has_method("get_shield"):
 				shield = body.get_shield()
 			if body.has_method("give_damage"):
-				print("bullet_hit->",body,current_damage)
 				body.give_damage(current_damage,global_position,direction)
 				current_damage -= shield
 				if current_damage <= 0:
@@ -77,4 +76,5 @@ func _on_Bullet_body_entered(body):
 
 # warning-ignore:unused_argument
 func _on_Bullet_body_exited(body):
-	pass # Replace with function body.
+	if body.has_method("exit_damage"):
+		body.exit_damage(global_position,direction)

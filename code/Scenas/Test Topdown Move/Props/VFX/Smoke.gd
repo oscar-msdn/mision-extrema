@@ -13,7 +13,7 @@ func _ready():
 	lifetime = LIFE_TIME
 	speed_scale = SPEED_SCALE * FACTOR
 	_killer_timer = KILL_TIMER / FACTOR
-	z_index = Util.ZINDEX_BULLET
+	z_index = Util.ZINDEX_BULLET + 1
 	z_as_relative = false
 	emitting = true
 

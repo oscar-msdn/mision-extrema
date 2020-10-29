@@ -20,6 +20,7 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 linear_accel = 18.82
 linear_accel_random = 0.5
+scale = 0.3
 scale_random = 0.5
 color_ramp = SubResource( 2 )
 
@@ -28,7 +29,7 @@ modulate = Color( 0.831373, 0.0666667, 0.0666667, 1 )
 scale = Vector2( 0.8, 0.8 )
 z_as_relative = false
 emitting = false
-amount = 20
+amount = 5
 lifetime = 0.5
 one_shot = true
 speed_scale = 1.5
