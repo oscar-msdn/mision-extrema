@@ -1,7 +1,7 @@
 extends NpcEntity
 
 func _player_died():
-	print("died!")
+	pass
 
 func _player_health_change(value):
-	print("health --> " , value)
+	pass

@@ -2,7 +2,7 @@ extends WeaponBase
 #Clase que define un arma de fuego del tipo revolver de alta potencia
 class_name GunWeapon
 
-func _init():
+func _ready():
 	amount_gun_charger = 0
 	amount_charger_bullets = 6
 	fire_rate = 30

@@ -2,7 +2,7 @@ extends NpcController
 #Clase que representa una entidad no controlada
 class_name NpcEntity
 
-func _init():
+func _ready():
 	add_to_group(Util.GROUP_NPC)
 	collision_layer = Util.LAYER_ENEMY
 	collision_mask = Util.MASK_ENEMY
@@ -13,6 +13,7 @@ func _health_changed(value,_position=Vector2.ZERO,_direction=Vector2.ZERO):
 	pass
 
 func _entity_died(_position=Vector2.ZERO,_direction=Vector2.ZERO):
+	pass
 # warning-ignore:return_value_discarded
 	#Helper.blood_splarks(_position,_direction)
 	#Helper.blood_splater(position,direction)
@@ -26,5 +27,5 @@ func _entity_died(_position=Vector2.ZERO,_direction=Vector2.ZERO):
 	queue_free()
 
 func exit_damage(position,direction) -> void:
-	print("exit_damage npc!->",position,direction)
+	pass
 	

@@ -667,7 +667,6 @@ func _on_FX_Timer_timeout():
 func NPC_ALERT_PROCESS()->void:
 	if on_NPC_ALERT_:
 		on_NPC_ALERT_ = false
-		print(INSTANCE_ID," -> off_alerta")
 
 func _on_NPC_ALERT_PROCESS(alerta:int,posicion:Vector2)->void:
 	on_NPC_ALERT_ = true
@@ -676,7 +675,6 @@ func _on_NPC_ALERT_PROCESS(alerta:int,posicion:Vector2)->void:
 			tipo_NPC_ALERT = alerta
 			posicion_NPC_ALERT = posicion
 			_IS_NPC_ARMED = true
-			print(INSTANCE_ID," -> on_alerta:",alerta,posicion)
 
 func SubscribirEventos()->void:
 	if IS_NPC:

@@ -4,11 +4,12 @@ export(float) var KILL_TIMER = 0.5
 var time_life_counter := 0.0
 var is_alive := true
 
-func _init():
+func _ready():
 	z_index = Util.ZINDEX_BULLET + 1
 	z_as_relative = false
+	_ready_()
 
-func _ready():
+func _ready_():
 	var smoke = Helper.smoke($Position2D.global_position)
 	smoke.scale *= 0.25
 	emitting = true

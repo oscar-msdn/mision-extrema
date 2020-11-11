@@ -119,7 +119,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "codeandweb.texturepacker" )
+enabled=PoolStringArray( "codeandweb.texturepacker", "godot-kra-psd-importer" )
 
 [input]
 
@@ -236,10 +236,10 @@ quality/intended_usage/framebuffer_allocation.mobile=2
 quality/2d/use_pixel_snap=true
 threads/thread_model=2
 vram_compression/import_etc=true
+quality/spatial_partitioning/render_tree_balance=0.5
 batching/options/single_rect_fallback=true
 gles2/compatibility/disable_half_float=true
 batching/precision/uv_contract=true
 environment/default_clear_color=Color( 0.188235, 0.188235, 0.188235, 1 )
 quality/depth/hdr.mobile=true
 environment/default_environment="res://default_env.tres"
-quality/spatial_partitioning/render_tree_balance=0.5

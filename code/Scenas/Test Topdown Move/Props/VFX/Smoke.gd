@@ -8,6 +8,13 @@ var time_life_counter := 0.0
 var is_alive := true
 var _killer_timer := 0.0
 
+#func _init():
+#	lifetime = LIFE_TIME
+#	speed_scale = SPEED_SCALE * FACTOR
+#	_killer_timer = KILL_TIMER / FACTOR
+#	z_index = Util.ZINDEX_BULLET + 1
+#	z_as_relative = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	lifetime = LIFE_TIME

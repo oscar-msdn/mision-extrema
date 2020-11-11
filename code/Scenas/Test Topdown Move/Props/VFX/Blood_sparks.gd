@@ -5,11 +5,12 @@ export(float) var KILL_TIMER = 10.0
 var time_life_counter := 0.0
 var is_alive := true
 
-func _init():
+func _ready():
 	z_index = Util.ZINDEX_BULLET + 1
 	z_as_relative = false
+	_ready_()
 
-func _ready():
+func _ready_():
 	$Blood_sparks_sub.z_index = Util.ZINDEX_BULLET + 1
 	$Blood_sparks_sub.z_as_relative = false
 	$Blood_sparks_sub.emitting = true

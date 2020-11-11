@@ -3,11 +3,12 @@ extends Sprite
 signal entity_over(body)
 signal entity_exit(body)
 
-func _init():
+func _ready():
 	z_index = Util.ZINDEX_CURSOR
 	z_as_relative = false
+	_ready_()
 
-func _ready():	
+func _ready_():	
 	$Area2D.collision_layer = Util.LAYER_CURSOR
 	$Area2D.collision_mask  = Util.MASK_CURSOR
 

@@ -11,11 +11,9 @@ func _ready():
 func Subscribir(evento:String,caller,metodo:String)->void:
 # warning-ignore:return_value_discarded
 	Events.connect(evento,caller,metodo)
-	print(caller," -> subcripcion:",evento)
 
 func Desubscribir(evento:String,caller,metodo:String)->void:
 	Events.disconnect(evento,caller,metodo)
-	print(caller," -> desubcripcion:",evento)
 	
 func Invoke(evento:String,caller,args:Array=[])->void:
 	match(args.size()):
@@ -32,7 +30,7 @@ func Invoke(evento:String,caller,args:Array=[])->void:
 		5:
 			Events.emit_signal(evento,args[0],args[1],args[2],args[3],args[4])
 	
-	print(caller," -> Invoke:",evento, " with ", args)
+
 
 
 

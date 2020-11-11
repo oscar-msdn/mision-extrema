@@ -6,7 +6,7 @@ export(float) var KILL_TIMER = 0.0
 var time_life_counter := 0.0
 var is_alive := true
 
-func _init():
+func _ready():
 	z_index = 1
 	z_as_relative = false
 

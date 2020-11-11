@@ -18,7 +18,6 @@ func fire_shoot_raycast(origin,target,damage=100,max_hits=4) -> void:
 	query.set_shape(segment)
 	var hits = space_state.intersect_shape(query, max_hits)
 	if hits:
-		print("hit-->",hits)
 		var shield := 0
 		var body = null
 		var current_damage = damage
@@ -27,8 +26,7 @@ func fire_shoot_raycast(origin,target,damage=100,max_hits=4) -> void:
 			if body:
 				if body.has_method("get_shield"):
 					shield = body.get_shield()
-					if body.has_method("give_damage"):
-						print("hit->",body,current_damage)
+					if body.has_method("give_damage"):	
 						body.give_damage(current_damage,hit.position)
 						current_damage -= shield
 						if current_damage <= 0:

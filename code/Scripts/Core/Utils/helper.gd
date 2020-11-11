@@ -1,6 +1,6 @@
 extends Node
 
-func _init():
+func _ready():
 	add_to_group("helper")
 	
 func add_child_to_root(object,position:=null):
@@ -36,6 +36,13 @@ func smoke(position,isadd:=true)->Object:
 	if isadd:
 		get_tree().get_root().call_deferred("add_child",smoke)
 	return smoke
+	
+func smoke2(position,isadd:=true)->Object:
+	var smoke = Props.Smoke2.instance()
+	smoke.global_position = position
+	if isadd:
+		get_tree().get_root().call_deferred("add_child",smoke)
+	return smoke
 
 func muzzle_flash(origin,target)->Object:
 	var muzzle = Props.MuzzleFlash.instance()
@@ -58,7 +65,6 @@ func set_enabler_entity(object:Node,stop=false):
 	object.set_physics_process_internal(stop)
 
 func Screenshoot()->void:
-	print("Screenshot")
 	get_viewport().queue_screen_capture()
 	yield(get_tree(), "idle_frame")
 	yield(get_tree(), "idle_frame")

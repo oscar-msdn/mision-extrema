@@ -18,11 +18,12 @@ var is_traza_on := true
 onready var _traza := $Line2D
 var vtraza_lenght := Vector2.ZERO
 
-func _init():
+func _ready():
 	collision_layer = Util.LAYER_BULLET
 	collision_mask = Util.MASK_BULLET
 	z_index = Util.ZINDEX_BULLET
 	z_as_relative = false
+	_ready_()
 
 func set_values(origin, target):
 	direction = origin.direction_to(target)
@@ -31,7 +32,7 @@ func set_values(origin, target):
 	current_damage = damage
 	is_alive = true
 
-func _ready():
+func _ready_():
 	_traza.set_point_position(2,vtraza_lenght)
 
 func _physics_process(delta):

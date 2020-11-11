@@ -8,7 +8,7 @@ const TipoColor = {
 	AMARILLO = Color.yellow * 1.5
 }
 
-func _init():
+func _ready():
 	set_width(2.0)
 	set_max_light(10.0)
 	set_color(TipoColor.ROJO)
