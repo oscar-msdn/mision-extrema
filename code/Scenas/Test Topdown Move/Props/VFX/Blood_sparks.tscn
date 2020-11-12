@@ -4,12 +4,12 @@
 [ext_resource path="res://Scenas/Test Topdown Move/Props/VFX/Blood_sparks.gd" type="Script" id=4]
 
 [sub_resource type="Gradient" id=1]
-colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0.811765 )
 
 [sub_resource type="GradientTexture" id=2]
 gradient = SubResource( 1 )
 
-[sub_resource type="ParticlesMaterial" id=8]
+[sub_resource type="ParticlesMaterial" id=3]
 lifetime_randomness = 0.5
 flag_disable_z = true
 direction = Vector3( 0, 1, 0 )
@@ -26,11 +26,11 @@ scale = 0.5
 scale_random = 0.1
 color_ramp = SubResource( 2 )
 
-[sub_resource type="AnimatedTexture" id=7]
+[sub_resource type="AnimatedTexture" id=4]
 flags = 4
 frame_0/texture = ExtResource( 3 )
 
-[sub_resource type="ParticlesMaterial" id=9]
+[sub_resource type="ParticlesMaterial" id=5]
 lifetime_randomness = 0.5
 flag_disable_z = true
 direction = Vector3( 0, -1, 0 )
@@ -52,12 +52,12 @@ modulate = Color( 0.921569, 0.0901961, 0.0901961, 1 )
 emitting = false
 amount = 25
 one_shot = true
-speed_scale = 2.0
+speed_scale = 4.0
 explosiveness = 0.87
 randomness = 0.5
 local_coords = false
-process_material = SubResource( 8 )
-texture = SubResource( 7 )
+process_material = SubResource( 3 )
+texture = SubResource( 4 )
 script = ExtResource( 4 )
 __meta__ = {
 "_editor_description_": ""
@@ -69,12 +69,12 @@ modulate = Color( 0.921569, 0.0901961, 0.0901961, 1 )
 emitting = false
 amount = 25
 one_shot = true
-speed_scale = 2.0
+speed_scale = 4.0
 explosiveness = 0.87
 randomness = 0.5
 local_coords = false
-process_material = SubResource( 9 )
-texture = SubResource( 7 )
+process_material = SubResource( 5 )
+texture = SubResource( 4 )
 __meta__ = {
 "_editor_description_": ""
 }

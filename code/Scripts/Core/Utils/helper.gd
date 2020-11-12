@@ -44,6 +44,14 @@ func smoke2(position,isadd:=true)->Object:
 		get_tree().get_root().call_deferred("add_child",smoke)
 	return smoke
 
+func ember_splarks(position,direction)->Object:
+	var splarks = Props.EmberSparks.instance()
+	splarks.global_position = position
+	splarks.rotation = direction.angle()
+	get_tree().get_root().call_deferred("add_child",splarks)
+	splarks.emitting = true
+	return splarks
+
 func muzzle_flash(origin,target)->Object:
 	var muzzle = Props.MuzzleFlash.instance()
 	var direction = origin.direction_to(target)

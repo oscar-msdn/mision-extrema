@@ -122,4 +122,3 @@ func draw_Laser(origin:Vector2 ,target:Vector2 )->void:
 		target = result.position
 		draw_circle(transform.xform_inv(target),3.0,laserPointColor)
 	draw_line(transform.xform_inv(origin),transform.xform_inv(target),laserColor,2.0)
-	

@@ -44,6 +44,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenas/Test Topdown Move/Props/Laser.gd"
 }, {
+"base": "StaticBody2D",
+"class": "MapaWall",
+"language": "GDScript",
+"path": "res://Scripts/Core/Mapa_wall.gd"
+}, {
 "base": "EntityHealth",
 "class": "NpcController",
 "language": "GDScript",
@@ -87,6 +92,7 @@ _global_script_class_icons={
 "GunWeapon": "",
 "InputController": "",
 "Laser": "",
+"MapaWall": "",
 "NpcController": "",
 "NpcEntity": "",
 "PlayerController": "",

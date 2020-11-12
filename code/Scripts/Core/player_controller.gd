@@ -5,6 +5,7 @@ class_name PlayerController
 export(int) var blink_cursor_time = 10
 export(int) var clear_input_direction = 2
 export(float) var cursor_distance = 200.0
+export(float) var cursor_min_distance = 1.0
 export(bool) var enable_blink_cursor = false
 export(bool) var disable_blink_cursor = false
 export(bool) var is_show_cursor = true
@@ -13,7 +14,7 @@ export(bool) var enable_custom_virtual_cursor = true
 export(bool) var is_hold_cursor = false
 
 var margin_screen := Vector2(100.0,100.0)
-var center_screen # := (get_viewport_rect().size - margin_screen) / 2
+var center_screen := Vector2() # (get_viewport_rect().size - margin_screen) / 2
 
 var virtual_cursor = null
 
@@ -42,6 +43,9 @@ func init_cursor():
 					assert(virtual_cursor.connect("entity_exit",self,"on_cursor_entity_exit") == 0,"Error")
 				else:
 					virtual_cursor.visible = true
+					
+				lookat_position = position + Vector2(1.0,0.0) * cursor_min_distance
+				
 			else:
 				Input.set_custom_mouse_cursor(Props.CursorCustom)
 		else:
@@ -85,11 +89,19 @@ func manage_cursor_position():
 		if enable_custom_virtual_cursor:
 			lookat_position += _global_mouse_pos 
 			if virtual_cursor:
+				var pos:Vector2 = lookat_position
+				
+				var x_max = position.x + center_screen.x
+				var x_min = position.x - center_screen.x
+				pos.x = clamp(pos.x, x_min, x_max)
+
+				var y_max = position.y + center_screen.y
+				var y_min = position.y - center_screen.y
+				pos.y = clamp(pos.y, y_min, y_max)
+				
+				lookat_position = pos
+				
 				virtual_cursor.position = lookat_position
-				var pos = virtual_cursor.position
-				pos.x = clamp(pos.x, position.x - center_screen.x,position.x + center_screen.x)
-				pos.y = clamp(pos.y, position.y - center_screen.y,position.y + center_screen.y)
-				virtual_cursor.position = pos
 		else:
 			lookat_position = get_global_mouse_position()
 			
@@ -132,5 +144,5 @@ func  _cursorEntityOn(body):
 func _cursorEntityOff(body):
 	pass
 
-func get_target_position()->Vector2:
+func get_target_position() -> Vector2:
 	return lookat_position

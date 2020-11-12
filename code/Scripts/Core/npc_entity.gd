@@ -17,6 +17,9 @@ func _entity_died(_position=Vector2.ZERO,_direction=Vector2.ZERO):
 # warning-ignore:return_value_discarded
 	#Helper.blood_splarks(_position,_direction)
 	#Helper.blood_splater(position,direction)
+	var sparks = Helper.ember_splarks(global_position,_direction)
+	sparks.modulate *= Color.red 
+	
 	Helper.blood_splater(global_position,_direction)
 	var smoke = Helper.smoke(_position)
 	smoke.modulate *= Color.chocolate 
