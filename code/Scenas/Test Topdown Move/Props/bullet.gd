@@ -1,4 +1,4 @@
-extends Area2D
+extends KinematicBody2D
 class_name Bullet
 
 export(float) var speed = 3000
@@ -23,7 +23,6 @@ func _ready():
 	collision_mask = Util.MASK_BULLET
 	z_index = Util.ZINDEX_BULLET
 	z_as_relative = false
-	$RayCast2D.collision_mask = Util.MASK_BULLET
 	_ready_()
 
 func set_values(origin, target):
@@ -38,12 +37,12 @@ func _ready_():
 
 func _physics_process(delta):
 	if is_alive:
-		global_translate(direction * speed * delta)
 		
-		if $RayCast2D.is_colliding():
-			var body = $RayCast2D.get_collider()
+		var collision  = move_and_collide(direction * speed * delta)
+		if collision:
+			var body = collision.collider
 			hit(body)
-		
+
 		if is_traza_on:
 			if vtraza_lenght.y < traza_lenght:
 				vtraza_lenght.y += speed * delta
@@ -71,17 +70,8 @@ func hit(body):
 				current_damage -= shield
 				if current_damage <= 0:
 					drop_bullet()
-
-# warning-ignore:unused_argument
-func _on_Bullet_area_entered(area):
-	pass # Replace with function body.
-
-# warning-ignore:unused_argument
-func _on_Bullet_area_exited(area):
-	pass # Replace with function body.
-
-func _on_Bullet_body_entered(body):
-	hit(body)
+			else:
+				drop_bullet()
 
 # warning-ignore:unused_argument
 func _on_Bullet_body_exited(body):

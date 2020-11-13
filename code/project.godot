@@ -9,7 +9,12 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Area2D",
+"base": "StaticBody2D",
+"class": "BoxWood",
+"language": "GDScript",
+"path": "res://Props/Prototipo/Caja.gd"
+}, {
+"base": "KinematicBody2D",
 "class": "Bullet",
 "language": "GDScript",
 "path": "res://Scenas/Test Topdown Move/Props/bullet.gd"
@@ -85,6 +90,7 @@ _global_script_classes=[ {
 "path": "res://Scripts/Core/weapon_base.gd"
 } ]
 _global_script_class_icons={
+"BoxWood": "",
 "Bullet": "",
 "EntityBase": "",
 "EntityController": "",
@@ -246,6 +252,6 @@ quality/spatial_partitioning/render_tree_balance=0.5
 batching/options/single_rect_fallback=true
 gles2/compatibility/disable_half_float=true
 batching/precision/uv_contract=true
-environment/default_clear_color=Color( 0.188235, 0.188235, 0.188235, 1 )
+environment/default_clear_color=Color( 0, 0, 0, 1 )
 quality/depth/hdr.mobile=true
 environment/default_environment="res://default_env.tres"

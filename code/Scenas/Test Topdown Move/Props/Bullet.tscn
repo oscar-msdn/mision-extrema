@@ -12,13 +12,12 @@ _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -0.497507, 0.0, 0, 0
 offsets = PoolRealArray( 0, 0.0628272, 0.109948, 1 )
 colors = PoolColorArray( 1.72941, 1.72941, 1, 1, 2.41569, 1.86667, 0, 0.905882, 1, 0.470588, 0.0156863, 0.901961, 0.992157, 0.356863, 0.0196078, 0.898039 )
 
-[node name="Bullet" type="Area2D"]
-input_pickable = false
+[node name="KinematicBody2D" type="KinematicBody2D"]
 collision_layer = 0
 collision_mask = 63
 script = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="Line2D" type="Line2D" parent="."]
@@ -32,14 +31,3 @@ joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 antialiased = true
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2( 3.05176e-05, -1.52588e-05 )
-enabled = true
-cast_to = Vector2( 0, 30 )
-collision_mask = 63
-
-[connection signal="area_entered" from="." to="." method="_on_Bullet_area_entered"]
-[connection signal="area_exited" from="." to="." method="_on_Bullet_area_exited"]
-[connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_Bullet_body_exited"]
