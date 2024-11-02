@@ -1,7 +1,7 @@
 # Mision Extrema
 GAME DESIGN DOCUMENT
 
-https://oskit-producciones.github.io/mision-extrema/
+
 
 ## Motor de juedo
 Godot engine
